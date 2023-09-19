@@ -1,4 +1,4 @@
-package top.cliouo.employeehomebackend;
+package top.cliouo.emp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
