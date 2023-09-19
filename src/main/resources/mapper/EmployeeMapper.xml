@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.cliouo.emp.mapper.EmployeeMapper">
+
+    <resultMap id="BaseResultMap" type="top.cliouo.emp.mapper.dataobject.EmployeeDO">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="deptId" column="dept_id" jdbcType="BIGINT"/>
+            <result property="jobId" column="job_id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="cardId" column="card_id" jdbcType="VARCHAR"/>
+            <result property="gender" column="gender" jdbcType="TINYINT"/>
+            <result property="phone" column="phone" jdbcType="VARCHAR"/>
+            <result property="address" column="address" jdbcType="VARCHAR"/>
+            <result property="postCode" column="post_code" jdbcType="VARCHAR"/>
+            <result property="tel" column="tel" jdbcType="VARCHAR"/>
+            <result property="qqNum" column="qq_num" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="party" column="party" jdbcType="VARCHAR"/>
+            <result property="birthday" column="birthday" jdbcType="TIMESTAMP"/>
+            <result property="race" column="race" jdbcType="VARCHAR"/>
+            <result property="education" column="education" jdbcType="VARCHAR"/>
+            <result property="speciality" column="speciality" jdbcType="VARCHAR"/>
+            <result property="hobby" column="hobby" jdbcType="VARCHAR"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="deleted" column="deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,dept_id,job_id,
+        name,card_id,gender,
+        phone,address,post_code,
+        tel,qq_num,email,
+        party,birthday,race,
+        education,speciality,hobby,
+        remark,create_time,deleted
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from system_employee
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from system_employee
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.cliouo.emp.mapper.dataobject.EmployeeDO" useGeneratedKeys="true">
+        insert into system_employee
+        ( id,dept_id,job_id
+        ,name,card_id,gender
+        ,phone,address,post_code
+        ,tel,qq_num,email
+        ,party,birthday,race
+        ,education,speciality,hobby
+        ,remark,create_time,deleted
+        )
+        values (#{id,jdbcType=BIGINT},#{deptId,jdbcType=BIGINT},#{jobId,jdbcType=BIGINT}
+        ,#{name,jdbcType=VARCHAR},#{cardId,jdbcType=VARCHAR},#{gender,jdbcType=TINYINT}
+        ,#{phone,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},#{postCode,jdbcType=VARCHAR}
+        ,#{tel,jdbcType=VARCHAR},#{qqNum,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR}
+        ,#{party,jdbcType=VARCHAR},#{birthday,jdbcType=TIMESTAMP},#{race,jdbcType=VARCHAR}
+        ,#{education,jdbcType=VARCHAR},#{speciality,jdbcType=VARCHAR},#{hobby,jdbcType=VARCHAR}
+        ,#{remark,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{deleted,jdbcType=TINYINT}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.cliouo.emp.mapper.dataobject.EmployeeDO" useGeneratedKeys="true">
+        insert into system_employee
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="deptId != null">dept_id,</if>
+                <if test="jobId != null">job_id,</if>
+                <if test="name != null">name,</if>
+                <if test="cardId != null">card_id,</if>
+                <if test="gender != null">gender,</if>
+                <if test="phone != null">phone,</if>
+                <if test="address != null">address,</if>
+                <if test="postCode != null">post_code,</if>
+                <if test="tel != null">tel,</if>
+                <if test="qqNum != null">qq_num,</if>
+                <if test="email != null">email,</if>
+                <if test="party != null">party,</if>
+                <if test="birthday != null">birthday,</if>
+                <if test="race != null">race,</if>
+                <if test="education != null">education,</if>
+                <if test="speciality != null">speciality,</if>
+                <if test="hobby != null">hobby,</if>
+                <if test="remark != null">remark,</if>
+                <if test="createTime != null">create_time,</if>
+                <if test="deleted != null">deleted,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=BIGINT},</if>
+                <if test="deptId != null">#{deptId,jdbcType=BIGINT},</if>
+                <if test="jobId != null">#{jobId,jdbcType=BIGINT},</if>
+                <if test="name != null">#{name,jdbcType=VARCHAR},</if>
+                <if test="cardId != null">#{cardId,jdbcType=VARCHAR},</if>
+                <if test="gender != null">#{gender,jdbcType=TINYINT},</if>
+                <if test="phone != null">#{phone,jdbcType=VARCHAR},</if>
+                <if test="address != null">#{address,jdbcType=VARCHAR},</if>
+                <if test="postCode != null">#{postCode,jdbcType=VARCHAR},</if>
+                <if test="tel != null">#{tel,jdbcType=VARCHAR},</if>
+                <if test="qqNum != null">#{qqNum,jdbcType=VARCHAR},</if>
+                <if test="email != null">#{email,jdbcType=VARCHAR},</if>
+                <if test="party != null">#{party,jdbcType=VARCHAR},</if>
+                <if test="birthday != null">#{birthday,jdbcType=TIMESTAMP},</if>
+                <if test="race != null">#{race,jdbcType=VARCHAR},</if>
+                <if test="education != null">#{education,jdbcType=VARCHAR},</if>
+                <if test="speciality != null">#{speciality,jdbcType=VARCHAR},</if>
+                <if test="hobby != null">#{hobby,jdbcType=VARCHAR},</if>
+                <if test="remark != null">#{remark,jdbcType=VARCHAR},</if>
+                <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+                <if test="deleted != null">#{deleted,jdbcType=TINYINT},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="top.cliouo.emp.mapper.dataobject.EmployeeDO">
+        update system_employee
+        <set>
+                <if test="deptId != null">
+                    dept_id = #{deptId,jdbcType=BIGINT},
+                </if>
+                <if test="jobId != null">
+                    job_id = #{jobId,jdbcType=BIGINT},
+                </if>
+                <if test="name != null">
+                    name = #{name,jdbcType=VARCHAR},
+                </if>
+                <if test="cardId != null">
+                    card_id = #{cardId,jdbcType=VARCHAR},
+                </if>
+                <if test="gender != null">
+                    gender = #{gender,jdbcType=TINYINT},
+                </if>
+                <if test="phone != null">
+                    phone = #{phone,jdbcType=VARCHAR},
+                </if>
+                <if test="address != null">
+                    address = #{address,jdbcType=VARCHAR},
+                </if>
+                <if test="postCode != null">
+                    post_code = #{postCode,jdbcType=VARCHAR},
+                </if>
+                <if test="tel != null">
+                    tel = #{tel,jdbcType=VARCHAR},
+                </if>
+                <if test="qqNum != null">
+                    qq_num = #{qqNum,jdbcType=VARCHAR},
+                </if>
+                <if test="email != null">
+                    email = #{email,jdbcType=VARCHAR},
+                </if>
+                <if test="party != null">
+                    party = #{party,jdbcType=VARCHAR},
+                </if>
+                <if test="birthday != null">
+                    birthday = #{birthday,jdbcType=TIMESTAMP},
+                </if>
+                <if test="race != null">
+                    race = #{race,jdbcType=VARCHAR},
+                </if>
+                <if test="education != null">
+                    education = #{education,jdbcType=VARCHAR},
+                </if>
+                <if test="speciality != null">
+                    speciality = #{speciality,jdbcType=VARCHAR},
+                </if>
+                <if test="hobby != null">
+                    hobby = #{hobby,jdbcType=VARCHAR},
+                </if>
+                <if test="remark != null">
+                    remark = #{remark,jdbcType=VARCHAR},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="deleted != null">
+                    deleted = #{deleted,jdbcType=TINYINT},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="top.cliouo.emp.mapper.dataobject.EmployeeDO">
+        update system_employee
+        set 
+            dept_id =  #{deptId,jdbcType=BIGINT},
+            job_id =  #{jobId,jdbcType=BIGINT},
+            name =  #{name,jdbcType=VARCHAR},
+            card_id =  #{cardId,jdbcType=VARCHAR},
+            gender =  #{gender,jdbcType=TINYINT},
+            phone =  #{phone,jdbcType=VARCHAR},
+            address =  #{address,jdbcType=VARCHAR},
+            post_code =  #{postCode,jdbcType=VARCHAR},
+            tel =  #{tel,jdbcType=VARCHAR},
+            qq_num =  #{qqNum,jdbcType=VARCHAR},
+            email =  #{email,jdbcType=VARCHAR},
+            party =  #{party,jdbcType=VARCHAR},
+            birthday =  #{birthday,jdbcType=TIMESTAMP},
+            race =  #{race,jdbcType=VARCHAR},
+            education =  #{education,jdbcType=VARCHAR},
+            speciality =  #{speciality,jdbcType=VARCHAR},
+            hobby =  #{hobby,jdbcType=VARCHAR},
+            remark =  #{remark,jdbcType=VARCHAR},
+            create_time =  #{createTime,jdbcType=TIMESTAMP},
+            deleted =  #{deleted,jdbcType=TINYINT}
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+</mapper>
