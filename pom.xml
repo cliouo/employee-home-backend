@@ -8,12 +8,17 @@
         <version>3.1.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>top.cliouo</groupId>
     <artifactId>employee-home-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>employee-home-backend</name>
     <description>employee-home-backend</description>
+
     <properties>
+        <druid.version>1.2.19</druid.version>
+        <mybatis.version>3.0.2</mybatis.version>
+        <satoken.version>1.35.0.RC</satoken.version>
         <java.version>17</java.version>
     </properties>
     <dependencies>
@@ -44,12 +49,12 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.2</version>
+            <version>${mybatis.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter-test</artifactId>
-            <version>3.0.2</version>
+            <version>${mybatis.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -71,8 +76,30 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-3-starter</artifactId>
-            <version>1.2.19</version>
+            <version>${druid.version}</version>
         </dependency>
+
+        <!-- Sa-Token 权限认证，在线文档：https://sa-token.cc -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-spring-boot3-starter</artifactId>
+            <version>${satoken.version}</version>
+        </dependency>
+
+        <!-- Sa-Token 整合 Redis （使用 jackson 序列化方式） -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-redis-jackson</artifactId>
+            <version>${satoken.version}</version>
+        </dependency>
+
+        <!-- 提供Redis连接池 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+
     </dependencies>
 
     <build>
