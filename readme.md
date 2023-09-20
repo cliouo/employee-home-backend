@@ -15,8 +15,10 @@
 
 - SpringBoot
 - Mybatis
+- Druid
 - MySQL
 - Sa-Token
 - Mapstruct
-  
+- Hibernate Validator
+- Lombok
   等技术实现。
