@@ -16,6 +16,7 @@
     <description>employee-home-backend</description>
 
     <properties>
+        <baidu.aip.version>4.16.16</baidu.aip.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <druid.version>1.2.19</druid.version>
         <mybatis.version>3.0.2</mybatis.version>
@@ -63,7 +64,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-<!--            <optional>true</optional>-->
+            <!--            <optional>true</optional>-->
         </dependency>
 
         <!--  springboot注解处理器  -->
@@ -106,6 +107,18 @@
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
+
+        <!--   百度人脸识别     -->
+        <dependency>
+            <groupId>com.baidu.aip</groupId>
+            <artifactId>java-sdk</artifactId>
+            <version>${baidu.aip.version}</version>
+        </dependency>
 
     </dependencies>
 
@@ -121,7 +134,6 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
-
                 </configuration>
             </plugin>
             <plugin>
@@ -130,21 +142,11 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-<!--                            <version>1.18.28</version>-->
-                            <version>${lombok.version}</version>
-
-                        </path>
-                        <path>
-                            <groupId>org.mapstruct</groupId>
-                            <artifactId>mapstruct-processor</artifactId>
-                            <version>${mapstruct.version}</version>
-                        </path>
-
-                    </annotationProcessorPaths>
+                    <annotationProcessors>
+                        <annotationProcessor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</annotationProcessor>
+                        <annotationProcessor>org.springframework.boot.configurationprocessor.ConfigurationMetadataAnnotationProcessor</annotationProcessor>
+                        <annotationProcessor>org.mapstruct.ap.MappingProcessor</annotationProcessor>
+                    </annotationProcessors>
                 </configuration>
             </plugin>
         </plugins>
