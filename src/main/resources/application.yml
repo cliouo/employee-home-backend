@@ -29,5 +29,9 @@ mybatis:
   mapper-locations: classpath:/mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
-
+baidu:
+  aip:
+    app-id: 39680870
+    api-key: UXIHLkWNI8Owl43QSxN9Lt5k
+    secret-key: q5lHT2QsBoKYjESQ4ph0fGZCe4RNX7tL
 

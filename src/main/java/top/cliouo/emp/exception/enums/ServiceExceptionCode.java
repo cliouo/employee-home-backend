@@ -6,7 +6,8 @@ package top.cliouo.emp.exception.enums;
  */
 public enum ServiceExceptionCode {
     USER_NOT_FOUND(400404, "用户名不存在！"),
-    USER_PASSWORD_ERROR(400405,"密码错误");
+    USER_PASSWORD_ERROR(400405,"密码错误"),
+    FACE_REGISTER_ERROR(400406,"人脸注册失败");
 
     private final int code;
     private final String message;

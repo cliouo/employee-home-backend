@@ -2,12 +2,15 @@ package top.cliouo.emp.mapper.dataobject;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import lombok.Builder;
 import lombok.Data;
 
 /**
  * @TableName system_document
  */
 @Data
+@Builder
 public class DocumentDO implements Serializable {
     private Long id;
 
