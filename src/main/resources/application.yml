@@ -1,6 +1,11 @@
+
+
 spring:
   profiles:
     active: local
+  mvc:
+    throw-exception-if-no-handler-found: true
+    static-path-pattern: /static/**
 
 ############## Sa-Token 配置 (文档: https://sa-token.cc) ##############
 sa-token:
@@ -24,3 +29,5 @@ mybatis:
   mapper-locations: classpath:/mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
+
+

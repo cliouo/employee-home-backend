@@ -10,6 +10,8 @@ import top.cliouo.emp.mapper.dataobject.UserDO;
 */
 public interface UserMapper {
 
+    UserDO selectByUsername(String username);
+
     int deleteByPrimaryKey(Long id);
 
     int insert(UserDO record);
@@ -21,5 +23,7 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(UserDO record);
 
     int updateByPrimaryKey(UserDO record);
+
+
 
 }
