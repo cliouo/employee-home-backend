@@ -1,5 +1,6 @@
 package top.cliouo.emp.mapper.dataobject;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -26,5 +27,6 @@ public class DocumentDO implements Serializable {
 
     private Integer deleted;
 
+    @Serial
     private static final long serialVersionUID = 1L;
 }

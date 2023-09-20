@@ -1,7 +1,6 @@
 package top.cliouo.emp.error;
 
 import cn.dev33.satoken.exception.SaTokenException;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;

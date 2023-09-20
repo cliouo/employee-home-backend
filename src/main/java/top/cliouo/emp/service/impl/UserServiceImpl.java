@@ -14,8 +14,6 @@ import top.cliouo.emp.mapper.dataobject.UserDO;
 import top.cliouo.emp.service.UserService;
 import top.cliouo.emp.util.BaiduAipFace;
 
-import java.util.HashMap;
-
 import static top.cliouo.emp.exception.enums.ServiceExceptionCode.*;
 
 @Service

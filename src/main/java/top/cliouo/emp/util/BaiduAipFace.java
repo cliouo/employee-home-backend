@@ -1,17 +1,12 @@
 package top.cliouo.emp.util;
 
 import com.baidu.aip.face.AipFace;
-import jakarta.annotation.PostConstruct;
 import org.json.JSONObject;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @Component
@@ -55,8 +50,7 @@ public class BaiduAipFace{
         // 人脸注册
         JSONObject res = client.addUser(image, imageType, groupId, userId, options);
         HashMap<String, Object> hashMap = (HashMap)res.toMap();
-        String faceToken = (String)findValueByKey(hashMap, "face_token");
-        return faceToken;
+        return (String)findValueByKey(hashMap, "face_token");
     }
 
     /**
@@ -101,14 +95,6 @@ public class BaiduAipFace{
         return null;
     }
 
-    public Boolean checkQuality1(JSONObject obj){
-
-        HashMap<String, Object> hashMap = (HashMap)obj.toMap();
-        System.out.println(hashMap.toString());
-
-        return true;
-    }
-
     /**
      * 人脸质量检测
      */
@@ -137,7 +123,7 @@ public class BaiduAipFace{
         Double yaw = (Double) convertToNumber(findValueByKey(o, "yaw"));
         Double pitch = (Double) convertToNumber(findValueByKey(o, "pitch"));
 
-        Boolean flag = true;
+        boolean flag = true;
 
         if(leftEye > 0.6 || rightEye > 0.6 || nose > 0.7 || mouth > 0.7 || left_cheek > 0.8 || right_cheek > 0.8 || chin_contour > 0.6){
             flag = false;
