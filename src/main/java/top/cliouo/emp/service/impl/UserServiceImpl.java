@@ -7,11 +7,13 @@ import org.springframework.stereotype.Service;
 import top.cliouo.emp.controller.vo.UserLoginReqVO;
 import top.cliouo.emp.controller.vo.UserLoginRespVO;
 import top.cliouo.emp.convert.UserConvert;
-import top.cliouo.emp.exception.UserNotFoundException;
+import top.cliouo.emp.exception.ServiceException;
+import top.cliouo.emp.exception.enums.ServiceExceptionCode;
 import top.cliouo.emp.mapper.UserMapper;
 import top.cliouo.emp.mapper.dataobject.UserDO;
 import top.cliouo.emp.service.UserService;
 
+import static top.cliouo.emp.exception.enums.ServiceExceptionCode.*;
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -20,17 +22,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserLoginRespVO login(UserLoginReqVO reqVO) {
         UserDO userDO = userMapper.selectByUsername(reqVO.getUsername());
-        if(userDO != null){
+        if (userDO != null) {
             // 使用checkpw方法检查被加密的字符串是否与原始字符串匹配
-            if(BCrypt.checkpw(reqVO.getPassword(), userDO.getPassword())){
+            if (BCrypt.checkpw(reqVO.getPassword(), userDO.getPassword())) {
                 // 密码正确
                 StpUtil.login(userDO.getId());
                 return UserConvert.INSTANCE.convert(userDO, StpUtil.getTokenInfo());
             }
-        }else{
-            throw new UserNotFoundException("用户不存在");
+            throw new ServiceException(USER_PASSWORD_ERROR);
         }
-        System.out.println("密码错误");
-        return null;
+        throw new ServiceException(USER_NOT_FOUND);
     }
 }

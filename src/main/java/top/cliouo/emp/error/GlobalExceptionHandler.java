@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import top.cliouo.emp.exception.ServiceException;
 import top.cliouo.emp.exception.enums.SaTokenExceptionCode;
 import top.cliouo.emp.util.CommonResult;
 
@@ -111,6 +112,19 @@ public class GlobalExceptionHandler {
         }
         return error(HttpStatus.FORBIDDEN.value(),"认证服务器繁忙，请稍后重试...");
     }
+
+    /**
+     * 处理业务异常 ServiceException
+     *
+     * 例如说，商品库存不足，用户手机号已存在。
+     */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(value = ServiceException.class)
+    public CommonResult serviceExceptionHandler(ServiceException ex) {
+        return CommonResult.error(ex.getCode(), ex.getMessage());
+    }
+
+
     /**
      * 处理系统异常，兜底处理所有的一切
      */
