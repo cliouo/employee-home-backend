@@ -18,6 +18,7 @@ public enum SaTokenExceptionCode {
     TOKEN_NOT_READABLE(11001, "未能读取到有效Token"),
     LOGIN_ID_NULL(11002, "登录时的账号id值为空"),
     CHANGE_LOGIN_ID_NULL(11003, "更改 Token 指向的 账号Id 时，账号Id值为空"),
+    TOKEN_NOT_FOUND(11011, "未能读取到有效Token"),
     TOKEN_INVALID(11012, "Token无效"),
     TOKEN_EXPIRED(11013, "Token已过期"),
     TOKEN_KICKED_OUT(11014, "Token已被顶下线"),

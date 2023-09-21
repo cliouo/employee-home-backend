@@ -16,4 +16,6 @@ public interface UserService {
     Object faceRegister(String face);
 
     Object faceLogin(String face);
+
+    Object logout();
 }

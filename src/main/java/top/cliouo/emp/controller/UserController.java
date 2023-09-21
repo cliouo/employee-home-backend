@@ -1,5 +1,6 @@
 package top.cliouo.emp.controller;
 
+import cn.dev33.satoken.annotation.SaCheckLogin;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -21,6 +22,12 @@ public class UserController {
         return userService.login(reqVO);
     }
 
+    @DeleteMapping("token")
+    public Object logout(){
+        return userService.logout();
+    }
+
+    @SaCheckLogin
     @PostMapping("face")
     public Object faceRegister(@RequestBody @Valid String face){
         return userService.faceRegister(face);
@@ -30,6 +37,8 @@ public class UserController {
     public Object faceLogin(@RequestBody @Valid String face){
         return userService.faceLogin(face);
     }
+
+    @SaCheckLogin
     @PutMapping("password")
     public Object alterPassword(@RequestBody @Valid UserAlterPwdReqVO reqVO){
         return userService.alterPwd(reqVO);

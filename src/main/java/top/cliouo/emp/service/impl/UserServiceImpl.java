@@ -83,9 +83,16 @@ public class UserServiceImpl implements UserService {
     public Object faceLogin(String face) {
         String userId = baiduAipFace.faceSearch(face, "BASE64");
         if(userId != null){
-            StpUtil.login(userId);
+            Long userIdForLong = Long.parseLong(userId);
+            StpUtil.login(userIdForLong);
             return UserConvert.INSTANCE.convert(userMapper.selectByPrimaryKey(StpUtil.getLoginIdAsLong()), StpUtil.getTokenInfo());
         }
         throw new ServiceException(FACE_LOGIN_ERROR);
+    }
+
+    @Override
+    public Object logout() {
+        StpUtil.logout();
+        return null;
     }
 }
