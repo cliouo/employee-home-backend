@@ -4,9 +4,9 @@ spring:
   datasource:
     druid:
       name: employee-home
-      url: jdbc:mysql://zeabur-master.clusters.zeabur.com:31693/${spring.datasource.druid.name}?useUnicode=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
-      username: root
-      password: 49El1q725CaK
+      url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${spring.datasource.druid.name}?useUnicode=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+      username: ${MYSQL_USERNAME}
+      password: ${MYSQL_PASSWORD}
       driver-class-name: com.mysql.cj.jdbc.Driver
       initial-size: 5 # 初始连接数
       min-idle: 10 # 最小连接池数量
@@ -19,17 +19,17 @@ spring:
       test-while-idle: true
       test-on-borrow: false
       test-on-return: false
-
+  data:
     # redis配置
     redis:
       # Redis数据库索引（默认为0）
       database: 1
       # Redis服务器地址
-      host: zeabur-master.clusters.zeabur.com
+      host: ${REDIS_HOST}
       # Redis服务器连接端口
-      port: 32117
+      port: ${REDIS_PORT}
       # Redis服务器连接密码（默认为空）
-      password: c240Gw8Pok73
+      password: ${REDIS_PASSWORD}
       # 连接超时时间
       timeout: 10s
       lettuce:
