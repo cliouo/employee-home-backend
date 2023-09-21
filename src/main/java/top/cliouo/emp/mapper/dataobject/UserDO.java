@@ -27,9 +27,7 @@ public class UserDO implements Serializable {
 
     private Integer status;
 
-    private String faceToken;
-
-    private String facePath;
+    private Integer faceStatus;
 
     private Date createTime;
 

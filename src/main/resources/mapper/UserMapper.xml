@@ -10,25 +10,15 @@
             <result property="password" column="password" jdbcType="VARCHAR"/>
             <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
             <result property="status" column="status" jdbcType="TINYINT"/>
-            <result property="faceToken" column="face_token" jdbcType="VARCHAR"/>
-            <result property="facePath" column="face_path" jdbcType="VARCHAR"/>
+            <result property="faceStatus" column="face_status" jdbcType="TINYINT"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,username,password,
-        nickname,status,face_token,
-        face_path,create_time
+        nickname,status,face_status,
+        create_time
     </sql>
-
-    <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from system_user
-        where deleted = 0
-        and username = #{username,jdbcType=VARCHAR}
-    </select>
-
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
@@ -46,13 +36,11 @@
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.cliouo.emp.mapper.dataobject.UserDO" useGeneratedKeys="true">
         insert into system_user
         ( id,username,password
-        ,nickname,status,face_token
-        ,face_path,create_time
-        )
+        ,nickname,status,face_status
+        ,create_time)
         values (#{id,jdbcType=BIGINT},#{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR}
-        ,#{nickname,jdbcType=VARCHAR},#{status,jdbcType=TINYINT},#{faceToken,jdbcType=VARCHAR}
-        ,#{facePath,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP}
-        )
+        ,#{nickname,jdbcType=VARCHAR},#{status,jdbcType=TINYINT},#{faceStatus,jdbcType=TINYINT}
+        ,#{createTime,jdbcType=TIMESTAMP})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.cliouo.emp.mapper.dataobject.UserDO" useGeneratedKeys="true">
         insert into system_user
@@ -62,8 +50,7 @@
                 <if test="password != null">password,</if>
                 <if test="nickname != null">nickname,</if>
                 <if test="status != null">status,</if>
-                <if test="faceToken != null">face_token,</if>
-                <if test="facePath != null">face_path,</if>
+                <if test="faceStatus != null">face_status,</if>
                 <if test="createTime != null">create_time,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -72,8 +59,7 @@
                 <if test="password != null">#{password,jdbcType=VARCHAR},</if>
                 <if test="nickname != null">#{nickname,jdbcType=VARCHAR},</if>
                 <if test="status != null">#{status,jdbcType=TINYINT},</if>
-                <if test="faceToken != null">#{faceToken,jdbcType=VARCHAR},</if>
-                <if test="facePath != null">#{facePath,jdbcType=VARCHAR},</if>
+                <if test="faceStatus != null">#{faceStatus,jdbcType=TINYINT},</if>
                 <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
         </trim>
     </insert>
@@ -92,11 +78,8 @@
                 <if test="status != null">
                     status = #{status,jdbcType=TINYINT},
                 </if>
-                <if test="faceToken != null">
-                    face_token = #{faceToken,jdbcType=VARCHAR},
-                </if>
-                <if test="facePath != null">
-                    face_path = #{facePath,jdbcType=VARCHAR},
+                <if test="faceStatus != null">
+                    face_status = #{faceStatus,jdbcType=TINYINT},
                 </if>
                 <if test="createTime != null">
                     create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -112,10 +95,9 @@
             password =  #{password,jdbcType=VARCHAR},
             nickname =  #{nickname,jdbcType=VARCHAR},
             status =  #{status,jdbcType=TINYINT},
-            face_token =  #{faceToken,jdbcType=VARCHAR},
-            face_path =  #{facePath,jdbcType=VARCHAR},
-            create_time =  #{createTime,jdbcType=TIMESTAMP},
+            face_status =  #{faceStatus,jdbcType=TINYINT},
+            create_time =  #{createTime,jdbcType=TIMESTAMP}
         where  deleted = 0
-          and id = #{id,jdbcType=BIGINT}
+        and id = #{id,jdbcType=BIGINT}
     </update>
 </mapper>
