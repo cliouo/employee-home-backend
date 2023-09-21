@@ -2,6 +2,7 @@ package top.cliouo.emp.convert;
 
 import cn.dev33.satoken.secure.BCrypt;
 import cn.dev33.satoken.stp.SaTokenInfo;
+import com.github.pagehelper.PageInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -12,6 +13,7 @@ import top.cliouo.emp.controller.user.vo.UsersDetailRespVO;
 import top.cliouo.emp.controller.user.vo.UserLoginRespVO;
 import top.cliouo.emp.controller.user.vo.UsersUpdateReqVO;
 import top.cliouo.emp.mapper.dataobject.UserDO;
+import top.cliouo.emp.util.PageResult;
 
 import java.util.Date;
 
@@ -40,6 +42,10 @@ public interface UserConvert {
     })
     UserDO convert(UsersUpdateReqVO reqVO);
 
+//    @Mappings({
+//            @Mapping(source = "total", target = "total",qualifiedByName = "passwordToBCrypt"),
+//    })
+    PageResult<UsersDetailRespVO> convertPage(PageInfo<UserDO> page);
 
 
 

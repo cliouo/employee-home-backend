@@ -7,8 +7,11 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.cliouo.emp.controller.user.vo.UsersAddReqVO;
+import top.cliouo.emp.controller.user.vo.UsersDetailRespVO;
+import top.cliouo.emp.controller.user.vo.UsersPageReqVO;
 import top.cliouo.emp.controller.user.vo.UsersUpdateReqVO;
 import top.cliouo.emp.service.users.UsersService;
+import top.cliouo.emp.util.PageResult;
 
 @RestController
 @RequestMapping("users")
@@ -21,6 +24,12 @@ public class UsersController {
     @GetMapping("{id}")
     public Object userDetail(@PathVariable("id") Long id){
         return usersService.userDetail(id);
+    }
+
+    @GetMapping
+    public PageResult<UsersDetailRespVO> userPage(@Valid UsersPageReqVO reqVO){
+
+        return usersService.userPage(reqVO);
     }
 
     @SaCheckRole("user:update")

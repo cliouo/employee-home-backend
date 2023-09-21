@@ -1,6 +1,9 @@
 package top.cliouo.emp.mapper;
 
+import top.cliouo.emp.controller.user.vo.UsersPageReqVO;
 import top.cliouo.emp.mapper.dataobject.UserDO;
+
+import java.util.List;
 
 /**
 * @author cliouo
@@ -19,6 +22,8 @@ public interface UserMapper {
     int insertSelective(UserDO record);
 
     UserDO selectByPrimaryKey(Long id);
+
+    List<UserDO> selectPage(UsersPageReqVO reqVO);
 
     int updateByPrimaryKeySelective(UserDO record);
 

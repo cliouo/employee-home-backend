@@ -20,6 +20,19 @@
         create_time
     </sql>
 
+    <select id="selectPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from system_user
+        where deleted = 0
+        <if test="status != null">
+        and status = #{status, jdbcType=TINYINT}
+        </if>
+        <if test="nickname != null">
+            and nickname like CONCAT('%', #{nickname}, '%')
+        </if>
+    </select>
+
     <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

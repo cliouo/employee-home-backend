@@ -3,6 +3,7 @@ package top.cliouo.emp.error;
 import cn.dev33.satoken.exception.SaTokenException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
@@ -21,6 +22,7 @@ import top.cliouo.emp.util.CommonResult;
 import static top.cliouo.emp.util.CommonResult.error;
 
 
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -131,6 +133,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     public CommonResult defaultExceptionHandler(Throwable ex) {
         // 返回 ERROR CommonResult
+
+        ex.printStackTrace();
+        log.info(ex.getMessage());
         return CommonResult.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
     }
 

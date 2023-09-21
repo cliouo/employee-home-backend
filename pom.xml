@@ -16,6 +16,7 @@
     <description>employee-home-backend</description>
 
     <properties>
+        <pagehelper.version>1.5.0</pagehelper.version>
         <baidu.aip.version>4.16.16</baidu.aip.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <druid.version>1.2.19</druid.version>
@@ -60,11 +61,24 @@
             <scope>test</scope>
         </dependency>
 
+        <!--    PageHelper依赖    -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>${pagehelper.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mybatis.spring.boot</groupId>
+                    <artifactId>mybatis-spring-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
         <!--    lombok依赖    -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <!--            <optional>true</optional>-->
+            <!--<optional>true</optional>-->
         </dependency>
 
         <!--  springboot注解处理器  -->
@@ -149,8 +163,11 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <annotationProcessors>
-                        <annotationProcessor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</annotationProcessor>
-                        <annotationProcessor>org.springframework.boot.configurationprocessor.ConfigurationMetadataAnnotationProcessor</annotationProcessor>
+                        <annotationProcessor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor
+                        </annotationProcessor>
+                        <annotationProcessor>
+                            org.springframework.boot.configurationprocessor.ConfigurationMetadataAnnotationProcessor
+                        </annotationProcessor>
                         <annotationProcessor>org.mapstruct.ap.MappingProcessor</annotationProcessor>
                     </annotationProcessors>
                 </configuration>
