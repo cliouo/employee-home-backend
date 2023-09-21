@@ -16,7 +16,8 @@
     <description>employee-home-backend</description>
 
     <properties>
-        <pagehelper.version>1.5.0</pagehelper.version>
+<!--        <pagehelper.version>1.5.0</pagehelper.version>-->
+        <pagehelper.version>1.4.7</pagehelper.version>
         <baidu.aip.version>4.16.16</baidu.aip.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <druid.version>1.2.19</druid.version>
