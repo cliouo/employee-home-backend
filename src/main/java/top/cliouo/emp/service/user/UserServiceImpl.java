@@ -1,17 +1,16 @@
-package top.cliouo.emp.service.impl;
+package top.cliouo.emp.service.user;
 
 import cn.dev33.satoken.secure.BCrypt;
 import cn.dev33.satoken.stp.StpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import top.cliouo.emp.controller.vo.UserAlterPwdReqVO;
-import top.cliouo.emp.controller.vo.UserLoginReqVO;
-import top.cliouo.emp.controller.vo.UserLoginRespVO;
+import top.cliouo.emp.controller.user.vo.UserAlterPwdReqVO;
+import top.cliouo.emp.controller.user.vo.UserLoginReqVO;
+import top.cliouo.emp.controller.user.vo.UserLoginRespVO;
 import top.cliouo.emp.convert.UserConvert;
 import top.cliouo.emp.exception.ServiceException;
 import top.cliouo.emp.mapper.UserMapper;
 import top.cliouo.emp.mapper.dataobject.UserDO;
-import top.cliouo.emp.service.UserService;
 import top.cliouo.emp.util.BaiduAipFace;
 
 import static top.cliouo.emp.exception.enums.ServiceExceptionCode.*;

@@ -1,4 +1,4 @@
-package top.cliouo.emp.controller;
+package top.cliouo.emp.controller.user;
 
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
@@ -6,9 +6,9 @@ import cn.dev33.satoken.annotation.SaCheckRole;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import top.cliouo.emp.controller.vo.UserAddReqVO;
-import top.cliouo.emp.controller.vo.UserUpdateReqVO;
-import top.cliouo.emp.service.UsersService;
+import top.cliouo.emp.controller.user.vo.UsersAddReqVO;
+import top.cliouo.emp.controller.user.vo.UsersUpdateReqVO;
+import top.cliouo.emp.service.users.UsersService;
 
 @RestController
 @RequestMapping("users")
@@ -25,14 +25,14 @@ public class UsersController {
 
     @SaCheckRole("user:update")
     @PutMapping("{id}")
-    public Object userUpdate(@PathVariable("id") Long id, @RequestBody @Valid UserUpdateReqVO reqVO){
+    public Object userUpdate(@PathVariable("id") Long id, @RequestBody @Valid UsersUpdateReqVO reqVO){
         return usersService.modify(id, reqVO);
     }
 
 
     @SaCheckRole("user:add")
     @PostMapping()
-    public Object userAdd(@RequestBody @Valid UserAddReqVO reqVO){
+    public Object userAdd(@RequestBody @Valid UsersAddReqVO reqVO){
         return usersService.save(reqVO);
     }
 

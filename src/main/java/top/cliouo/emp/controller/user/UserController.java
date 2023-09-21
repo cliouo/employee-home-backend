@@ -1,13 +1,13 @@
-package top.cliouo.emp.controller;
+package top.cliouo.emp.controller.user;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import top.cliouo.emp.controller.vo.UserAlterPwdReqVO;
-import top.cliouo.emp.controller.vo.UserLoginReqVO;
-import top.cliouo.emp.service.UserService;
+import top.cliouo.emp.controller.user.vo.UserAlterPwdReqVO;
+import top.cliouo.emp.controller.user.vo.UserLoginReqVO;
+import top.cliouo.emp.service.user.UserService;
 
 @RestController
 @RequestMapping("user")

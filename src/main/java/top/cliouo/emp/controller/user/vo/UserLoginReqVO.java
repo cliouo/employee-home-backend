@@ -1,4 +1,4 @@
-package top.cliouo.emp.controller.vo;
+package top.cliouo.emp.controller.user.vo;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

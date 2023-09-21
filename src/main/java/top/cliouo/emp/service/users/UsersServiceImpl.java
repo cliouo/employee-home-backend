@@ -1,16 +1,15 @@
-package top.cliouo.emp.service.impl;
+package top.cliouo.emp.service.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import top.cliouo.emp.controller.vo.UserAddReqVO;
-import top.cliouo.emp.controller.vo.UserDetailRespVO;
-import top.cliouo.emp.controller.vo.UserUpdateReqVO;
+import top.cliouo.emp.controller.user.vo.UsersAddReqVO;
+import top.cliouo.emp.controller.user.vo.UsersDetailRespVO;
+import top.cliouo.emp.controller.user.vo.UsersUpdateReqVO;
 import top.cliouo.emp.convert.UserConvert;
 import top.cliouo.emp.exception.ServiceException;
 import top.cliouo.emp.exception.enums.ServiceExceptionCode;
 import top.cliouo.emp.mapper.UserMapper;
 import top.cliouo.emp.mapper.dataobject.UserDO;
-import top.cliouo.emp.service.UsersService;
 
 import static top.cliouo.emp.exception.enums.ServiceExceptionCode.*;
 
@@ -22,14 +21,14 @@ public class UsersServiceImpl implements UsersService {
     UserMapper userMapper;
 
     @Override
-    public UserDetailRespVO userDetail(Long id) {
+    public UsersDetailRespVO userDetail(Long id) {
         // 校验用户存在
         UserDO userDO = checkUserExist(id);
         return UserConvert.INSTANCE.convert(userDO);
     }
 
     @Override
-    public Object save(UserAddReqVO reqVO) {
+    public Object save(UsersAddReqVO reqVO) {
         UserDO userSelectDO = userMapper.selectByUsername(reqVO.getUsername());
         if(userSelectDO != null){
             throw new ServiceException(ServiceExceptionCode.USERNAME_HAS_EXISTED);
@@ -52,7 +51,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public Object modify(Long id, UserUpdateReqVO reqVO) {
+    public Object modify(Long id, UsersUpdateReqVO reqVO) {
         // 校验用户存在
         UserDO oldUserDO = checkUserExist(id);
         String oldUsername = oldUserDO.getUsername();

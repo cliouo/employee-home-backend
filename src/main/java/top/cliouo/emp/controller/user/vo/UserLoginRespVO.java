@@ -1,4 +1,4 @@
-package top.cliouo.emp.controller.vo;
+package top.cliouo.emp.controller.user.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

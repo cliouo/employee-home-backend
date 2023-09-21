@@ -7,10 +7,10 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
-import top.cliouo.emp.controller.vo.UserAddReqVO;
-import top.cliouo.emp.controller.vo.UserDetailRespVO;
-import top.cliouo.emp.controller.vo.UserLoginRespVO;
-import top.cliouo.emp.controller.vo.UserUpdateReqVO;
+import top.cliouo.emp.controller.user.vo.UsersAddReqVO;
+import top.cliouo.emp.controller.user.vo.UsersDetailRespVO;
+import top.cliouo.emp.controller.user.vo.UserLoginRespVO;
+import top.cliouo.emp.controller.user.vo.UsersUpdateReqVO;
 import top.cliouo.emp.mapper.dataobject.UserDO;
 
 import java.util.Date;
@@ -28,17 +28,17 @@ public interface UserConvert {
     @Mappings({
             @Mapping(source = "faceStatus", target = "faceStatus",qualifiedByName = "faceStatusToBoolean"),
     })
-    UserDetailRespVO convert(UserDO userDO);
+    UsersDetailRespVO convert(UserDO userDO);
 
     @Mappings({
             @Mapping(source = "password", target = "password",qualifiedByName = "passwordToBCrypt"),
     })
-    UserDO convert(UserAddReqVO reqVO);
+    UserDO convert(UsersAddReqVO reqVO);
 
     @Mappings({
             @Mapping(source = "password", target = "password",qualifiedByName = "passwordToBCrypt"),
     })
-    UserDO convert(UserUpdateReqVO reqVO);
+    UserDO convert(UsersUpdateReqVO reqVO);
 
 
 

@@ -1,16 +1,14 @@
-package top.cliouo.emp.controller.vo;
+package top.cliouo.emp.controller.user.vo;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class UserDetailRespVO extends UserBaseVO{
+public class UsersDetailRespVO extends UserBaseVO{
 
     private Long id;
 
