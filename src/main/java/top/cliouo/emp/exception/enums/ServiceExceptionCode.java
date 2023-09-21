@@ -11,7 +11,10 @@ public enum ServiceExceptionCode {
     FACE_LOGIN_ERROR(400407, "人脸登录失败"),
     USER_NOT_FOUND(400408, "用户不存在"),
     USER_SAVE_ERROR(400409, "用户保存失败"),
-    USERNAME_HAS_EXISTED(400410, "用户名已存在");
+    USERNAME_HAS_EXISTED(400410, "用户名已存在"),
+    USER_DELETE_ERROR(400420, "用户删除失败"),
+    USER_UPDATE_ERROR(400430, "用户更新失败");
+
     private final int code;
     private final String message;
 

@@ -1,20 +1,11 @@
 package top.cliouo.emp.controller.vo;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class UserDetailRespVO extends UserBaseVO{
-
-    private Long id;
-
-    private Boolean faceStatus;
-
-    private Date createTime;
+public class UserUpdateReqVO extends UserAddReqVO{
 }

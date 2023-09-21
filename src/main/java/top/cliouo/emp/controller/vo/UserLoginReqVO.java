@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserLoginReqVO{
 
     @NotBlank(message = "用户名不能为空")

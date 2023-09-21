@@ -10,6 +10,7 @@ import org.mapstruct.factory.Mappers;
 import top.cliouo.emp.controller.vo.UserAddReqVO;
 import top.cliouo.emp.controller.vo.UserDetailRespVO;
 import top.cliouo.emp.controller.vo.UserLoginRespVO;
+import top.cliouo.emp.controller.vo.UserUpdateReqVO;
 import top.cliouo.emp.mapper.dataobject.UserDO;
 
 import java.util.Date;
@@ -33,6 +34,13 @@ public interface UserConvert {
             @Mapping(source = "password", target = "password",qualifiedByName = "passwordToBCrypt"),
     })
     UserDO convert(UserAddReqVO reqVO);
+
+    @Mappings({
+            @Mapping(source = "password", target = "password",qualifiedByName = "passwordToBCrypt"),
+    })
+    UserDO convert(UserUpdateReqVO reqVO);
+
+
 
 
 

@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserLoginRespVO {
 
     private Long id;

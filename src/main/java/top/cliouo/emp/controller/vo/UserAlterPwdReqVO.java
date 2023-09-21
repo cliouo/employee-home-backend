@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserAlterPwdReqVO {
 
     @NotBlank(message = "旧密码不能为空")

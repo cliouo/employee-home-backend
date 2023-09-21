@@ -13,8 +13,6 @@ import org.hibernate.validator.constraints.Range;
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserBaseVO {
 
     @Length(min = 4, max = 16, message = "账号长度为 4-16 位")
