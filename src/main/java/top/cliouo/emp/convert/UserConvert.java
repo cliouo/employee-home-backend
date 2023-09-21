@@ -1,11 +1,13 @@
 package top.cliouo.emp.convert;
 
+import cn.dev33.satoken.secure.BCrypt;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
+import top.cliouo.emp.controller.vo.UserAddReqVO;
 import top.cliouo.emp.controller.vo.UserDetailRespVO;
 import top.cliouo.emp.controller.vo.UserLoginRespVO;
 import top.cliouo.emp.mapper.dataobject.UserDO;
@@ -27,7 +29,10 @@ public interface UserConvert {
     })
     UserDetailRespVO convert(UserDO userDO);
 
-
+    @Mappings({
+            @Mapping(source = "password", target = "password",qualifiedByName = "passwordToBCrypt"),
+    })
+    UserDO convert(UserAddReqVO reqVO);
 
 
 
@@ -41,6 +46,12 @@ public interface UserConvert {
     default Boolean faceStatusToBoolean(Integer faceStatus) {
         return faceStatus == 1;
     }
+
+    @Named("passwordToBCrypt")
+    default String passwordToBCrypt(String password) {
+        return BCrypt.hashpw(password);
+    }
+
 
 
 }
