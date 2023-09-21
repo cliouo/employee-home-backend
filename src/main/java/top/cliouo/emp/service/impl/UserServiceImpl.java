@@ -76,6 +76,11 @@ public class UserServiceImpl implements UserService {
         if(faceToken == null){
             throw new ServiceException(FACE_REGISTER_ERROR);
         }
+        // 人脸注册成功，更新用户表
+        userMapper.updateByPrimaryKeySelective(new UserDO().builder()
+                .id(StpUtil.getLoginIdAsLong())
+                .faceStatus(1)
+                .build());
         return null;
     }
 
