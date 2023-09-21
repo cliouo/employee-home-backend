@@ -22,12 +22,12 @@ public class UserController {
     }
 
     @PostMapping("face")
-    public Object faceRegister(@RequestBody String face){
+    public Object faceRegister(@RequestBody @Valid String face){
         return userService.faceRegister(face);
     }
 
     @PostMapping("face/token")
-    public Object faceLogin(@RequestParam("face") String face){
+    public Object faceLogin(@RequestBody @Valid String face){
         return userService.faceLogin(face);
     }
     @PutMapping("password")

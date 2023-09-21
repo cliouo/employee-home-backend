@@ -4,6 +4,8 @@ import com.baidu.aip.face.AipFace;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import top.cliouo.emp.exception.ServiceException;
+import top.cliouo.emp.exception.enums.ServiceExceptionCode;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +29,7 @@ public class BaiduAipFace{
 
         // 人脸检测
         JSONObject res = client.detect(image, imageType, options);
+
         return checkQuality(res);
     }
 
@@ -50,29 +53,39 @@ public class BaiduAipFace{
         // 人脸注册
         JSONObject res = client.addUser(image, imageType, groupId, userId, options);
         HashMap<String, Object> hashMap = (HashMap)res.toMap();
+        Integer errorCode = (Integer)findValueByKey(hashMap, "error_code");
+        if(errorCode != 0){
+            throw new ServiceException(ServiceExceptionCode.FACE_REGISTER_ERROR);
+        }
         return (String)findValueByKey(hashMap, "face_token");
     }
 
     /**
      * 人脸搜索
      */
-    public void faceSearch() {
+    public String faceSearch(String image, String imageType) {
         // 传入可选参数调用接口
         HashMap<String, Object> options = new HashMap<String, Object>();
         options.put("match_threshold", "70");
-        options.put("quality_control", "NORMAL");
-        options.put("liveness_control", "LOW");
-        options.put("user_id", "233451");
-        options.put("max_user_num", "3");
-
-        String image = "取决于image_type参数，传入BASE64字符串或URL字符串或FACE_TOKEN字符串";
-        String imageType = "BASE64";
-        String groupIdList = "3,2";
+        String groupIdList = "emp";
 
         // 人脸搜索
         JSONObject res = client.search(image, imageType, groupIdList, options);
-        System.out.println(res.toString(2));
+        HashMap<String, Object> hashMap = (HashMap)res.toMap();
 
+        Integer errorCode = (Integer)findValueByKey(hashMap, "error_code");
+        if(errorCode != 0){
+            throw new ServiceException(ServiceExceptionCode.FACE_LOGIN_ERROR);
+        }
+        System.out.println(res.toString(2));
+        List userList = (List)findValueByKey(hashMap, "user_list");
+        HashMap o = (HashMap)userList.get(0);
+        Double score = convertToDouble(findValueByKey(o, "score"));
+        String userId = (String)findValueByKey(o, "user_id");
+        if(score < 70) {
+            return null;
+        }
+        return userId;
     }
 
     public Object findValueByKey(HashMap obj, String key) {
@@ -100,28 +113,32 @@ public class BaiduAipFace{
      */
     public Boolean checkQuality(JSONObject obj){
         HashMap<String, Object> hashMap = (HashMap)obj.toMap();
+        Integer errorCode = (Integer)findValueByKey(hashMap, "error_code");
+        if(errorCode != 0){
+            throw new ServiceException(ServiceExceptionCode.FACE_REGISTER_ERROR);
+        }
         List faceList = (List)findValueByKey(hashMap, "face_list");
         HashMap o = (HashMap)faceList.get(0);
 
         String faceToken = (String)findValueByKey(o, "face_token");
 
         HashMap occlusion = (HashMap)findValueByKey(o, "occlusion");
-        Double leftEye = (Double) convertToNumber(findValueByKey(occlusion, "left_eye"));
-        Double rightEye = (Double) convertToNumber(findValueByKey(occlusion, "right_eye"));
-        Double nose = (Double) convertToNumber(findValueByKey(occlusion, "nose"));
-        Double mouth = (Double) convertToNumber(findValueByKey(occlusion, "mouth"));
-        Double left_cheek = (Double) convertToNumber(findValueByKey(occlusion, "left_cheek"));
-        Double right_cheek = (Double) convertToNumber(findValueByKey(occlusion, "right_cheek"));
-        Double chin_contour = (Double) convertToNumber(findValueByKey(occlusion, "chin_contour"));
+        Double leftEye = convertToDouble(findValueByKey(occlusion, "left_eye"));
+        Double rightEye = convertToDouble(findValueByKey(occlusion, "right_eye"));
+        Double nose = convertToDouble(findValueByKey(occlusion, "nose"));
+        Double mouth = convertToDouble(findValueByKey(occlusion, "mouth"));
+        Double left_cheek = convertToDouble(findValueByKey(occlusion, "left_cheek"));
+        Double right_cheek = convertToDouble(findValueByKey(occlusion, "right_cheek"));
+        Double chin_contour = convertToDouble(findValueByKey(occlusion, "chin_contour"));
 
-        Double blur = (Double) convertToNumber(findValueByKey(o, "blur"));
+        Double blur = convertToDouble(findValueByKey(o, "blur"));
         Integer completeness = (Integer) findValueByKey(o, "completeness");
 
-        Double illumination = (Double) convertToNumber(findValueByKey(o, "illumination"));
+        Double illumination = convertToDouble(findValueByKey(o, "illumination"));
 
-        Double roll = (Double) convertToNumber(findValueByKey(o, "roll"));
-        Double yaw = (Double) convertToNumber(findValueByKey(o, "yaw"));
-        Double pitch = (Double) convertToNumber(findValueByKey(o, "pitch"));
+        Double roll = convertToDouble(findValueByKey(o, "roll"));
+        Double yaw = convertToDouble(findValueByKey(o, "yaw"));
+        Double pitch = convertToDouble(findValueByKey(o, "pitch"));
 
         boolean flag = true;
 
@@ -147,12 +164,8 @@ public class BaiduAipFace{
 
         return flag;
     }
-    public static Number convertToNumber(Object value) {
+    public static Double convertToDouble(Object value) {
         Number value1 = (Number) value;
-        if (value instanceof Integer) {
-            return value1.doubleValue();
-        } else {
-            return value1;
-        }
+        return value1.doubleValue();
     }
 }
