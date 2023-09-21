@@ -16,6 +16,7 @@ public interface UserConvert {
     UserConvert INSTANCE = Mappers.getMapper(UserConvert.class); // <2>
 
     @Mappings({
+            @Mapping(source = "userDO.faceStatus", target = "faceStatus",qualifiedByName = "faceStatusToBoolean"),
             @Mapping(source = "tokenInfo.tokenTimeout", target = "tokenExpireTime", qualifiedByName = "timeoutToExpireTime"),
     })
     UserLoginRespVO convert(UserDO userDO, SaTokenInfo tokenInfo);
@@ -23,5 +24,10 @@ public interface UserConvert {
     @Named("timeoutToExpireTime")
     default Date timeoutToExpireTime(long timeout) {
         return new Date(System.currentTimeMillis() + timeout * 1000);
+    }
+
+    @Named("faceStatusToBoolean")
+    default Boolean faceStatusToBoolean(Integer faceStatus) {
+        return faceStatus == 1;
     }
 }

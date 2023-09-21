@@ -19,6 +19,8 @@ public class UserLoginRespVO {
 
     private Integer status;
 
+    private Boolean faceStatus;
+
     private String tokenName;
 
     private String tokenValue;
