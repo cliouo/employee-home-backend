@@ -8,10 +8,12 @@ import lombok.NoArgsConstructor;
 
 
 @Data
-@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserLoginReqVO extends UserBaseVO{
+public class UserLoginReqVO{
+
+    @NotBlank(message = "用户名不能为空")
+    private String username;
 
     @NotBlank(message = "密码不能为空")
     private String password;

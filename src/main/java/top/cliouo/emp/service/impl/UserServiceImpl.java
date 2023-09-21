@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
             }
             throw new ServiceException(USER_PASSWORD_ERROR);
         }
-        throw new ServiceException(USER_NOT_FOUND);
+        throw new ServiceException(USERNAME_NOT_FOUND);
     }
 
     @Override
