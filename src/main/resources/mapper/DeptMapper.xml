@@ -66,15 +66,15 @@
                 remark = #{remark,jdbcType=VARCHAR},
             </if>
         </set>
-        where  deleted = 0
+        where deleted = 0
         and id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="top.cliouo.emp.mapper.dataobject.DeptDO">
         update system_dept
         set
             name =  #{name,jdbcType=VARCHAR},
-            remark =  #{remark,jdbcType=VARCHAR},
-            where deleted = 0
-                and id = #{id,jdbcType=BIGINT}
+            remark =  #{remark,jdbcType=VARCHAR}
+        where deleted = 0
+        and id = #{id,jdbcType=BIGINT}
     </update>
 </mapper>

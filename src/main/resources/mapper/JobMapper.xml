@@ -73,7 +73,7 @@
         update system_job
         set 
             name =  #{name,jdbcType=VARCHAR},
-            remark =  #{remark,jdbcType=VARCHAR},
+            remark =  #{remark,jdbcType=VARCHAR}
         where deleted = 0
         and id = #{id,jdbcType=BIGINT}
     </update>
