@@ -39,12 +39,12 @@ public class TestPwd {
 
     @Test
     public void testMapStruct() {
-        UserDO userDO = new UserDO();
-        userDO.setId(1L);
-        userDO.setUsername("admin");
-        UserLoginRespVO userLoginRespVO = UserConvert.INSTANCE.convert(userDO, StpUtil.getTokenInfo());
-        System.out.println("333:" + userLoginRespVO.getId());
-        System.out.println("444:" + userLoginRespVO.getUsername());
+//        UserDO userDO = new UserDO();
+//        userDO.setId(1L);
+//        userDO.setUsername("admin");
+//        UserLoginRespVO userLoginRespVO = UserConvert.INSTANCE.convert(userDO, StpUtil.getTokenInfo());
+//        System.out.println("333:" + userLoginRespVO.getId());
+//        System.out.println("444:" + userLoginRespVO.getUsername());
     }
 
     @Test
