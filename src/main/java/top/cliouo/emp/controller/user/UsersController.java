@@ -32,20 +32,20 @@ public class UsersController {
         return usersService.userPage(reqVO);
     }
 
-    @SaCheckRole("user:update")
+    @SaCheckRole("admin")
     @PutMapping("{id}")
     public Object userUpdate(@PathVariable("id") Long id, @RequestBody @Valid UsersUpdateReqVO reqVO){
         return usersService.modify(id, reqVO);
     }
 
 
-    @SaCheckRole("user:add")
+    @SaCheckRole("admin")
     @PostMapping()
     public Object userAdd(@RequestBody @Valid UsersAddReqVO reqVO){
         return usersService.save(reqVO);
     }
 
-    @SaCheckRole("user:delete")
+    @SaCheckRole("admin")
     @DeleteMapping("{id}")
     public Object userDelete(@PathVariable("id") Long id){
         return usersService.delete(id);
