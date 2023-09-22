@@ -18,8 +18,6 @@ public class JobDO implements Serializable {
 
     private String remark;
 
-    private Integer deleted;
-
     @Serial
     private static final long serialVersionUID = 1L;
 }

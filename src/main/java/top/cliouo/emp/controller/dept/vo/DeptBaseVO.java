@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class DeptBaseVO {
 
-    @NotBlank(message = "职位名称不能为空")
+    @NotBlank(message = "部门名称不能为空")
     private String name;
 
     private String remark;

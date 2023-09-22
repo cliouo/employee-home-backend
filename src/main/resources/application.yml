@@ -35,7 +35,6 @@ pagehelper:
   helper-dialect: mysql
   reasonable: true
   default-count: true
-  support-methods-arguments: true
 
 baidu:
   aip:

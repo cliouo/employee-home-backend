@@ -27,7 +27,7 @@ public class DeptServiceImpl implements DeptService {
     public Object save(DeptAddReqVO reqVO) {
         DeptDO deptDO = DeptConvert.INSTANCE.convert(reqVO);
         if(deptMapper.insert(deptDO) != 1){
-            throw new ServiceException(ServiceExceptionCode.JOB_SAVE_ERROR);
+            throw new ServiceException(ServiceExceptionCode.DEPT_SAVE_ERROR);
         }
         return null;
     }
@@ -38,7 +38,7 @@ public class DeptServiceImpl implements DeptService {
         checkDeptExist(id);
 
         if(deptMapper.deleteByPrimaryKey(id) != 1){
-            throw new ServiceException(ServiceExceptionCode.JOB_DELETE_ERROR);
+            throw new ServiceException(ServiceExceptionCode.DEPT_DELETE_ERROR);
         }
         return true;
     }
@@ -50,7 +50,7 @@ public class DeptServiceImpl implements DeptService {
         DeptDO deptDO = DeptConvert.INSTANCE.convert(reqVO);
         deptDO.setId(id);
         if(deptMapper.updateByPrimaryKeySelective(deptDO) != 1){
-            throw new ServiceException(ServiceExceptionCode.JOB_UPDATE_ERROR);
+            throw new ServiceException(ServiceExceptionCode.DEPT_UPDATE_ERROR);
         }
         return true;
     }
@@ -73,7 +73,7 @@ public class DeptServiceImpl implements DeptService {
     // 校验职位是否存在
     public void checkDeptExist(Long id){
         if(deptMapper.selectByPrimaryKey(id) == null){
-            throw new ServiceException(ServiceExceptionCode.JOB_NOT_EXIST);
+            throw new ServiceException(ServiceExceptionCode.DEPT_NOT_EXIST);
         }
     }
 }

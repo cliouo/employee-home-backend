@@ -30,9 +30,6 @@ public class UserDO implements Serializable {
     private Integer faceStatus;
 
     private Date createTime;
-
-    private Integer deleted;
-
     @Serial
     private static final long serialVersionUID = 1L;
 }
