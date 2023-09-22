@@ -13,7 +13,8 @@ public enum ServiceExceptionCode {
     USER_SAVE_ERROR(400409, "用户保存失败"),
     USERNAME_HAS_EXISTED(400410, "用户名已存在"),
     USER_DELETE_ERROR(400420, "用户删除失败"),
-    USER_UPDATE_ERROR(400430, "用户更新失败");
+    USER_UPDATE_ERROR(400430, "用户更新失败"),
+    JOB_SAVE_ERROR(400500, "职位保存失败");
 
     private final int code;
     private final String message;

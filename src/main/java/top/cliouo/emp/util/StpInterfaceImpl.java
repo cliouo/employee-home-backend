@@ -23,6 +23,9 @@ public class StpInterfaceImpl implements StpInterface {
      */
     @Override
     public List<String> getPermissionList(Object loginId, String loginType) {
+
+        // TODO 权限认证有问题！！！
+
         // 本 list 仅做模拟，实际项目中要根据具体业务逻辑来查询权限
         List<String> list = new ArrayList<String>();
         // 超级管理员
@@ -40,7 +43,15 @@ public class StpInterfaceImpl implements StpInterface {
     @Override
     public List<String> getRoleList(Object loginId, String loginType) {
 
-        UserDO userDO = userMapper.selectByPrimaryKey((Long) loginId);
+        // TODO 权限认证有问题！！！
+
+        Long loginIdAsLong;
+        if(loginId instanceof String){
+            loginIdAsLong = Long.parseLong((String) loginId);
+        }else{
+            loginIdAsLong = (Long) loginId;
+        }
+        UserDO userDO = userMapper.selectByPrimaryKey((Long) loginIdAsLong);
         Integer status = userDO.getStatus();
         List<String> list = new ArrayList<String>();
 
@@ -48,6 +59,7 @@ public class StpInterfaceImpl implements StpInterface {
         if (status == 1) {
             list.add("admin");
             list.add("super-admin");
+            list.add("*");
         }else {
             list.add("user");
         }
