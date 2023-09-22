@@ -20,6 +20,9 @@ public class JobController {
     @Autowired
     JobService jobService;
 
+    @Autowired
+    JobConvert jobConvert;
+
     @PostMapping
     @SaCheckRole("admin")
     public Object addJob(@RequestBody @Valid JobAddReqVO ReqVO) {
@@ -40,7 +43,7 @@ public class JobController {
 
     @GetMapping("{id}")
     public Object getJob(@PathVariable("id") Long id) {
-        return JobConvert.INSTANCE.convert(jobService.get(id));
+        return jobConvert.convert(jobService.get(id));
     }
 
     @GetMapping

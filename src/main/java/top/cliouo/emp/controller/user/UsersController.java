@@ -10,6 +10,7 @@ import top.cliouo.emp.controller.user.vo.UsersAddReqVO;
 import top.cliouo.emp.controller.user.vo.UsersDetailRespVO;
 import top.cliouo.emp.controller.user.vo.UsersPageReqVO;
 import top.cliouo.emp.controller.user.vo.UsersUpdateReqVO;
+import top.cliouo.emp.convert.UserConvert;
 import top.cliouo.emp.service.users.UsersService;
 import top.cliouo.emp.util.PageResult;
 
@@ -21,9 +22,12 @@ public class UsersController {
     @Autowired
     UsersService usersService;
 
+    @Autowired
+    UserConvert userConvert;
+
     @GetMapping("{id}")
     public Object userDetail(@PathVariable("id") Long id){
-        return usersService.userDetail(id);
+        return userConvert.convert(usersService.userDetail(id));
     }
 
     @GetMapping

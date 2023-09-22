@@ -10,11 +10,8 @@ import top.cliouo.emp.controller.dept.vo.DeptUpdateReqVO;
 import top.cliouo.emp.mapper.dataobject.DeptDO;
 import top.cliouo.emp.util.PageResult;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface DeptConvert {
-
-    DeptConvert INSTANCE = Mappers.getMapper(DeptConvert.class);
-
 
     DeptDO convert(DeptAddReqVO reqVO);
     DeptDO convert(DeptUpdateReqVO reqVO);

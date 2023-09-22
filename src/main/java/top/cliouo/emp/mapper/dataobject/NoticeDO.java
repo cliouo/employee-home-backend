@@ -23,8 +23,6 @@ public class NoticeDO implements Serializable {
 
     private Date createTime;
 
-    private Integer deleted;
-
     @Serial
     private static final long serialVersionUID = 1L;
 }

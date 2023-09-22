@@ -21,7 +21,11 @@ public enum ServiceExceptionCode {
     DEPT_NOT_EXIST(400600, "部门不存在"),
     DEPT_SAVE_ERROR(400610, "部门保存失败"),
     DEPT_DELETE_ERROR(400620, "部门删除失败"),
-    DEPT_UPDATE_ERROR(400630, "部门更新失败");
+    DEPT_UPDATE_ERROR(400630, "部门更新失败"),
+    NOTICE_SAVE_ERROR(400700, "公告保存失败"),
+    NOTICE_NOT_EXISTS(400710, "该公告不存在"),
+    NOTICE_DELETE_ERROR(400720, "公告删除失败"),
+    NOTICE_UPDATE_ERROR(400730, "公告更新失败");
 
     private final int code;
     private final String message;

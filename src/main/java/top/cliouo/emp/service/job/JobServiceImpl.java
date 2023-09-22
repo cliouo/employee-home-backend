@@ -23,10 +23,13 @@ public class JobServiceImpl implements JobService{
     @Autowired
     JobMapper jobMapper;
 
+    @Autowired
+    JobConvert jobConvert;
+
     @Override
     public Object save(JobAddReqVO reqVO) {
-        JobDO jobDO = JobConvert.INSTANCE.convert(reqVO);
-        if(jobMapper.insert(jobDO) != 1){
+        JobDO jobDO = jobConvert.convert(reqVO);
+        if(jobMapper.insertSelective(jobDO) != 1){
             throw new ServiceException(ServiceExceptionCode.JOB_SAVE_ERROR);
         }
         return null;
@@ -47,7 +50,7 @@ public class JobServiceImpl implements JobService{
         // 校验职位是否存在
         checkJobExist(id);
 
-        JobDO jobDO = JobConvert.INSTANCE.convert(reqVO);
+        JobDO jobDO = jobConvert.convert(reqVO);
         jobDO.setId(id);
         if(jobMapper.updateByPrimaryKeySelective(jobDO) != 1){
             throw new ServiceException(ServiceExceptionCode.JOB_UPDATE_ERROR);
@@ -65,7 +68,7 @@ public class JobServiceImpl implements JobService{
 
         List<JobDO> jobDOList = jobMapper.selectPage(reqVO);
         PageInfo<JobDO> page = new PageInfo(jobDOList);
-        return JobConvert.INSTANCE.convertPage(page);
+        return jobConvert.convertPage(page);
     }
 
 

@@ -1,6 +1,12 @@
 package top.cliouo.emp.mapper;
 
+import top.cliouo.emp.controller.job.vo.JobPageReqVO;
+import top.cliouo.emp.controller.notice.vo.NoticePageReqVO;
+import top.cliouo.emp.mapper.dataobject.JobDO;
 import top.cliouo.emp.mapper.dataobject.NoticeDO;
+import top.cliouo.emp.util.PageResult;
+
+import java.util.List;
 
 /**
 * @author cliouo
@@ -21,5 +27,7 @@ public interface NoticeMapper {
     int updateByPrimaryKeySelective(NoticeDO record);
 
     int updateByPrimaryKey(NoticeDO record);
+
+    List<NoticeDO> selectPage(NoticePageReqVO reqVO);
 
 }

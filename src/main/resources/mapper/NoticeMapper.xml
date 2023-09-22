@@ -17,6 +17,19 @@
         user_id,create_time
     </sql>
 
+    <select id="selectPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from system_notice
+        where deleted = 0
+        <if test="title != null">
+            and title like CONCAT('%', #{title}, '%')
+        </if>
+        <if test="content != null">
+            and content like CONCAT('%', #{content}, '%')
+        </if>
+    </select>
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

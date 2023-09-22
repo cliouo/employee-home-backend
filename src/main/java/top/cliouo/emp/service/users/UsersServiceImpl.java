@@ -25,11 +25,14 @@ public class UsersServiceImpl implements UsersService {
     @Autowired
     UserMapper userMapper;
 
+    @Autowired
+    UserConvert userConvert;
+
     @Override
-    public UsersDetailRespVO userDetail(Long id) {
+    public UserDO userDetail(Long id) {
         // 校验用户存在
         UserDO userDO = checkUserExist(id);
-        return UserConvert.INSTANCE.convert(userDO);
+        return userDO;
     }
 
     @Override
@@ -38,7 +41,7 @@ public class UsersServiceImpl implements UsersService {
         if (userSelectDO != null) {
             throw new ServiceException(ServiceExceptionCode.USERNAME_HAS_EXISTED);
         }
-        UserDO userDO = UserConvert.INSTANCE.convert(reqVO);
+        UserDO userDO = userConvert.convert(reqVO);
         if (userMapper.insertSelective(userDO) != 1) {
             throw new ServiceException(ServiceExceptionCode.USER_SAVE_ERROR);
         }
@@ -62,7 +65,7 @@ public class UsersServiceImpl implements UsersService {
         String oldUsername = oldUserDO.getUsername();
         String newUsername = reqVO.getUsername();
 
-        UserDO userDO = UserConvert.INSTANCE.convert(reqVO);
+        UserDO userDO = userConvert.convert(reqVO);
         userDO.setId(id);
         if (oldUsername.equals(newUsername)) {
             // 新旧用户名相同，不修改用户名
@@ -76,7 +79,7 @@ public class UsersServiceImpl implements UsersService {
             throw new ServiceException(ServiceExceptionCode.USER_UPDATE_ERROR);
         }
         UserDO userBackDO = userMapper.selectByPrimaryKey(id);
-        return UserConvert.INSTANCE.convert(userBackDO);
+        return userConvert.convert(userBackDO);
     }
 
     @Override
@@ -84,7 +87,7 @@ public class UsersServiceImpl implements UsersService {
 
         List<UserDO> userDOList = userMapper.selectPage(reqVO);
         PageInfo<UserDO> page = new PageInfo(userDOList);
-        return UserConvert.INSTANCE.convertPage(page);
+        return userConvert.convertPage(page);
     }
 
     public UserDO checkUserExist(Long id) {

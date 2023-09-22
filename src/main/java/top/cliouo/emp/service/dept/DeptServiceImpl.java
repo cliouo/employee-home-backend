@@ -23,10 +23,13 @@ public class DeptServiceImpl implements DeptService {
     @Autowired
     DeptMapper deptMapper;
 
+    @Autowired
+    DeptConvert deptConvert;
+
     @Override
     public Object save(DeptAddReqVO reqVO) {
-        DeptDO deptDO = DeptConvert.INSTANCE.convert(reqVO);
-        if(deptMapper.insert(deptDO) != 1){
+        DeptDO deptDO = deptConvert.convert(reqVO);
+        if(deptMapper.insertSelective(deptDO) != 1){
             throw new ServiceException(ServiceExceptionCode.DEPT_SAVE_ERROR);
         }
         return null;
@@ -36,7 +39,6 @@ public class DeptServiceImpl implements DeptService {
     public Object delete(Long id) {
         // 校验职位是否存在
         checkDeptExist(id);
-
         if(deptMapper.deleteByPrimaryKey(id) != 1){
             throw new ServiceException(ServiceExceptionCode.DEPT_DELETE_ERROR);
         }
@@ -47,7 +49,7 @@ public class DeptServiceImpl implements DeptService {
         // 校验职位是否存在
         checkDeptExist(id);
 
-        DeptDO deptDO = DeptConvert.INSTANCE.convert(reqVO);
+        DeptDO deptDO = deptConvert.convert(reqVO);
         deptDO.setId(id);
         if(deptMapper.updateByPrimaryKeySelective(deptDO) != 1){
             throw new ServiceException(ServiceExceptionCode.DEPT_UPDATE_ERROR);
@@ -65,7 +67,7 @@ public class DeptServiceImpl implements DeptService {
 
         List<DeptDO> deptDOList = deptMapper.selectPage(reqVO);
         PageInfo<DeptDO> page = new PageInfo(deptDOList);
-        return DeptConvert.INSTANCE.convertPage(page);
+        return deptConvert.convertPage(page);
     }
 
 

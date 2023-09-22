@@ -20,6 +20,9 @@ public class DeptController {
     @Autowired
     DeptService deptService;
 
+    @Autowired
+    DeptConvert deptConvert;
+
     @PostMapping
     @SaCheckRole("admin")
     public Object addDept(@RequestBody @Valid DeptAddReqVO ReqVO) {
@@ -40,7 +43,7 @@ public class DeptController {
 
     @GetMapping("{id}")
     public Object getDept(@PathVariable("id") Long id) {
-        return DeptConvert.INSTANCE.convert(deptService.get(id));
+        return deptConvert.convert(deptService.get(id));
     }
 
     @GetMapping

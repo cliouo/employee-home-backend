@@ -166,10 +166,11 @@
                     <annotationProcessors>
                         <annotationProcessor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor
                         </annotationProcessor>
+                        <annotationProcessor>org.mapstruct.ap.MappingProcessor</annotationProcessor>
                         <annotationProcessor>
                             org.springframework.boot.configurationprocessor.ConfigurationMetadataAnnotationProcessor
                         </annotationProcessor>
-                        <annotationProcessor>org.mapstruct.ap.MappingProcessor</annotationProcessor>
+<!--                        <annotationProcessor>org.mapstruct.ap.MappingProcessor</annotationProcessor>-->
                     </annotationProcessors>
                 </configuration>
             </plugin>

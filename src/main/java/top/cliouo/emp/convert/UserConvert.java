@@ -17,9 +17,8 @@ import top.cliouo.emp.util.PageResult;
 
 import java.util.Date;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserConvert {
-    UserConvert INSTANCE = Mappers.getMapper(UserConvert.class); // <2>
 
     @Mappings({
             @Mapping(source = "userDO.faceStatus", target = "faceStatus",qualifiedByName = "faceStatusToBoolean"),

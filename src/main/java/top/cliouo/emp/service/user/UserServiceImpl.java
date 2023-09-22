@@ -22,6 +22,9 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Autowired
+    UserConvert userConvert;
+
+    @Autowired
     BaiduAipFace baiduAipFace;
 
     @Override
@@ -32,7 +35,7 @@ public class UserServiceImpl implements UserService {
         checkPassword(reqVO.getUsername(), reqVO.getPassword());
         // 密码正确
         StpUtil.login(userDO.getId());
-        return UserConvert.INSTANCE.convert(userDO, StpUtil.getTokenInfo());
+        return userConvert.convert(userDO, StpUtil.getTokenInfo());
     }
 
     @Override
@@ -89,7 +92,7 @@ public class UserServiceImpl implements UserService {
         if(userId != null){
             Long userIdForLong = Long.parseLong(userId);
             StpUtil.login(userIdForLong);
-            return UserConvert.INSTANCE.convert(userMapper.selectByPrimaryKey(StpUtil.getLoginIdAsLong()), StpUtil.getTokenInfo());
+            return userConvert.convert(userMapper.selectByPrimaryKey(StpUtil.getLoginIdAsLong()), StpUtil.getTokenInfo());
         }
         throw new ServiceException(FACE_LOGIN_ERROR);
     }

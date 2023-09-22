@@ -10,11 +10,8 @@ import top.cliouo.emp.controller.job.vo.JobUpdateReqVO;
 import top.cliouo.emp.mapper.dataobject.JobDO;
 import top.cliouo.emp.util.PageResult;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface JobConvert {
-
-    JobConvert INSTANCE = Mappers.getMapper(JobConvert.class);
-
 
     JobDO convert(JobAddReqVO reqVO);
     JobDO convert(JobUpdateReqVO reqVO);
