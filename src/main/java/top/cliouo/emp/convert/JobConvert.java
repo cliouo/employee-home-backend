@@ -20,4 +20,6 @@ public interface JobConvert {
     JobDO convert(JobUpdateReqVO reqVO);
 
     PageResult<JobDetailRespVO> convertPage(PageInfo<JobDO> page);
+
+    JobDetailRespVO convert(JobDO jobDO);
 }

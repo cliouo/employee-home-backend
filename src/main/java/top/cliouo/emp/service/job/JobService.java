@@ -4,6 +4,7 @@ import top.cliouo.emp.controller.job.vo.JobAddReqVO;
 import top.cliouo.emp.controller.job.vo.JobDetailRespVO;
 import top.cliouo.emp.controller.job.vo.JobPageReqVO;
 import top.cliouo.emp.controller.job.vo.JobUpdateReqVO;
+import top.cliouo.emp.mapper.dataobject.JobDO;
 import top.cliouo.emp.util.PageResult;
 
 public interface JobService {
@@ -14,7 +15,7 @@ public interface JobService {
 
     Object modify(Long id, JobUpdateReqVO reqVO);
 
-    Object get(Long id);
+    JobDO get(Long id);
 
     PageResult<JobDetailRespVO> jobPage(JobPageReqVO reqVO);
 }

@@ -55,7 +55,7 @@ public class JobServiceImpl implements JobService{
         return true;
     }
     @Override
-    public Object get(Long id){
+    public JobDO get(Long id){
         // 校验职位是否存在
         checkJobExist(id);
         return jobMapper.selectByPrimaryKey(id);
