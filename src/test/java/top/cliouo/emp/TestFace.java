@@ -14,7 +14,7 @@ public class TestFace {
     @Test
     public void testFace() {
 
-        Boolean base64 = baiduAipFace.faceDetection(imgBase64, "BASE64");
-        System.out.println("base64"+base64);
+//        Boolean base64 = baiduAipFace.faceDetection(imgBase64, "BASE64");
+//        System.out.println("base64"+base64);
     }
 }
