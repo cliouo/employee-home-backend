@@ -11,8 +11,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,name,remark,
-        deleted
+        id,name,remark
     </sql>
 
     <select id="selectPage" resultMap="BaseResultMap">

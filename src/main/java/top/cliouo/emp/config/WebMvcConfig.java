@@ -1,7 +1,6 @@
 package top.cliouo.emp.config;
 
 import cn.dev33.satoken.interceptor.SaInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

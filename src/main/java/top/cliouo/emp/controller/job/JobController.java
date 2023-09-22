@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import top.cliouo.emp.controller.job.vo.JobAddReqVO;
 import top.cliouo.emp.controller.job.vo.JobPageReqVO;
 import top.cliouo.emp.controller.job.vo.JobUpdateReqVO;
-import top.cliouo.emp.controller.user.vo.UsersPageReqVO;
 import top.cliouo.emp.convert.JobConvert;
 import top.cliouo.emp.service.job.JobService;
 

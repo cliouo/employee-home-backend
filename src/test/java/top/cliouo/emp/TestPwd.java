@@ -5,7 +5,6 @@ import cn.dev33.satoken.stp.StpUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import top.cliouo.emp.controller.user.vo.UserLoginRespVO;
-import top.cliouo.emp.convert.UserConvert;
 import top.cliouo.emp.mapper.dataobject.UserDO;
 
 @SpringBootTest

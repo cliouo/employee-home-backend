@@ -1,10 +1,7 @@
 package top.cliouo.emp.controller.user.vo;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 
 @Data

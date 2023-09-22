@@ -2,10 +2,7 @@ package top.cliouo.emp.controller.user.vo;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
 
 @Data
 public class UserAlterPwdReqVO {

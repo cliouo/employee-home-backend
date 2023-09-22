@@ -5,71 +5,76 @@
 <mapper namespace="top.cliouo.emp.mapper.DeptMapper">
 
     <resultMap id="BaseResultMap" type="top.cliouo.emp.mapper.dataobject.DeptDO">
-            <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="name" column="name" jdbcType="VARCHAR"/>
-            <result property="remark" column="remark" jdbcType="VARCHAR"/>
-            <result property="deleted" column="deleted" jdbcType="TINYINT"/>
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,name,remark,
-        deleted
+        id,name,remark
     </sql>
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from system_dept
+        where deleted = 0
+        <if test="name != null">
+            and name like concat('%',#{name},'%')
+        </if>
+        order by id desc
+    </select>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from system_dept
-        where  id = #{id,jdbcType=BIGINT} 
+        where deleted = 0
+        and id = #{id,jdbcType=BIGINT}
     </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-        delete from system_dept
-        where  id = #{id,jdbcType=BIGINT} 
-    </delete>
+    <update id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        update system_dept
+        set deleted = 1
+        where id = #{id,jdbcType=BIGINT}
+    </update>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.cliouo.emp.mapper.dataobject.DeptDO" useGeneratedKeys="true">
         insert into system_dept
-        ( id,name,remark
-        ,deleted)
-        values (#{id,jdbcType=BIGINT},#{name,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR}
-        ,#{deleted,jdbcType=TINYINT})
+            ( id,name,remark)
+        values (#{id,jdbcType=BIGINT},#{name,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.cliouo.emp.mapper.dataobject.DeptDO" useGeneratedKeys="true">
         insert into system_dept
         <trim prefix="(" suffix=")" suffixOverrides=",">
-                <if test="id != null">id,</if>
-                <if test="name != null">name,</if>
-                <if test="remark != null">remark,</if>
-                <if test="deleted != null">deleted,</if>
+            <if test="id != null">id,</if>
+            <if test="name != null">name,</if>
+            <if test="remark != null">remark,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-                <if test="id != null">#{id,jdbcType=BIGINT},</if>
-                <if test="name != null">#{name,jdbcType=VARCHAR},</if>
-                <if test="remark != null">#{remark,jdbcType=VARCHAR},</if>
-                <if test="deleted != null">#{deleted,jdbcType=TINYINT},</if>
+            <if test="id != null">#{id,jdbcType=BIGINT},</if>
+            <if test="name != null">#{name,jdbcType=VARCHAR},</if>
+            <if test="remark != null">#{remark,jdbcType=VARCHAR},</if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="top.cliouo.emp.mapper.dataobject.DeptDO">
         update system_dept
         <set>
-                <if test="name != null">
-                    name = #{name,jdbcType=VARCHAR},
-                </if>
-                <if test="remark != null">
-                    remark = #{remark,jdbcType=VARCHAR},
-                </if>
-                <if test="deleted != null">
-                    deleted = #{deleted,jdbcType=TINYINT},
-                </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
         </set>
-        where   id = #{id,jdbcType=BIGINT} 
+        where  deleted = 0
+        and id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="top.cliouo.emp.mapper.dataobject.DeptDO">
         update system_dept
-        set 
+        set
             name =  #{name,jdbcType=VARCHAR},
             remark =  #{remark,jdbcType=VARCHAR},
-            deleted =  #{deleted,jdbcType=TINYINT}
-        where   id = #{id,jdbcType=BIGINT} 
+            where deleted = 0
+                and id = #{id,jdbcType=BIGINT}
     </update>
 </mapper>

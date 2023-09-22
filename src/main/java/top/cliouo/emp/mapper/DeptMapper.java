@@ -1,6 +1,9 @@
 package top.cliouo.emp.mapper;
 
+import top.cliouo.emp.controller.dept.vo.DeptPageReqVO;
 import top.cliouo.emp.mapper.dataobject.DeptDO;
+
+import java.util.List;
 
 /**
 * @author cliouo
@@ -21,5 +24,7 @@ public interface DeptMapper {
     int updateByPrimaryKeySelective(DeptDO record);
 
     int updateByPrimaryKey(DeptDO record);
+
+    List<DeptDO> selectPage(DeptPageReqVO reqVO);
 
 }
