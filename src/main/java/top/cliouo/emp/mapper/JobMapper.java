@@ -1,6 +1,9 @@
 package top.cliouo.emp.mapper;
 
+import top.cliouo.emp.controller.job.vo.JobPageReqVO;
 import top.cliouo.emp.mapper.dataobject.JobDO;
+
+import java.util.List;
 
 /**
 * @author cliouo
@@ -22,4 +25,5 @@ public interface JobMapper {
 
     int updateByPrimaryKey(JobDO record);
 
+    List<JobDO> selectPage(JobPageReqVO reqVO);
 }

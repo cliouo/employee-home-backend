@@ -82,26 +82,8 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public PageResult<UsersDetailRespVO> userPage(UsersPageReqVO reqVO) {
 
-//        PageHelper.startPage(1, 10);
-
         List<UserDO> userDOList = userMapper.selectPage(reqVO);
         PageInfo<UserDO> page = new PageInfo(userDOList);
-
-        //测试PageInfo全部属性
-        //PageInfo包含了非常全面的分页属性
-        System.out.println("getPageNum(): " + page.getPageNum());
-        System.out.println("getPageSize(): " + page.getPageSize());
-        System.out.println("getStartRow(): " + page.getStartRow());
-        System.out.println("getEndRow(): " + page.getEndRow());
-        System.out.println("getTotal(): " + page.getTotal());
-        System.out.println("getPages(): " + page.getPages());
-//        System.out.println("getFirstPage(): " + page.getFirstPage());
-//        System.out.println("getLastPage(): " + page.getLastPage());
-        System.out.println("isFirstPage(): " + page.isIsFirstPage());
-        System.out.println("isLastPage(): " + page.isIsLastPage());
-        System.out.println("isHasPreviousPage(): " + page.isHasPreviousPage());
-        System.out.println("isHasNextPage(): " + page.isHasNextPage());
-
         return UserConvert.INSTANCE.convertPage(page);
     }
 
