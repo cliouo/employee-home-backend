@@ -25,7 +25,6 @@ public class DocumentDO implements Serializable {
 
     private Long userId;
 
-    private Integer deleted;
 
     @Serial
     private static final long serialVersionUID = 1L;

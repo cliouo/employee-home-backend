@@ -25,7 +25,11 @@ public enum ServiceExceptionCode {
     NOTICE_SAVE_ERROR(400700, "公告保存失败"),
     NOTICE_NOT_EXISTS(400710, "该公告不存在"),
     NOTICE_DELETE_ERROR(400720, "公告删除失败"),
-    NOTICE_UPDATE_ERROR(400730, "公告更新失败");
+    NOTICE_UPDATE_ERROR(400730, "公告更新失败"),
+    EMPLOYEE_SAVE_ERROR(400800, "员工保存失败"),
+    EMPLOYEE_DELETE_ERROR(400810, "员工删除失败"),
+    EMPLOYEE_NOT_EXIST(400820, "员工不存在"),
+    EMPLOYEE_UPDATE_ERROR(400830, "员工更新失败");
 
     private final int code;
     private final String message;

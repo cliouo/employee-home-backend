@@ -1,6 +1,11 @@
 package top.cliouo.emp.mapper;
 
+import top.cliouo.emp.controller.employee.vo.EmployeeDetailRespVO;
+import top.cliouo.emp.controller.employee.vo.EmployeePageReqVO;
 import top.cliouo.emp.mapper.dataobject.EmployeeDO;
+import top.cliouo.emp.util.PageResult;
+
+import java.util.List;
 
 /**
 * @author cliouo
@@ -22,4 +27,5 @@ public interface EmployeeMapper {
 
     int updateByPrimaryKey(EmployeeDO record);
 
+    List<EmployeeDO> selectPage(EmployeePageReqVO reqVO);
 }
