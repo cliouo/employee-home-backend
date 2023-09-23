@@ -36,6 +36,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public Object delete(Long id) {
+        checkEmployeeExist(id);
         if (employeeMapper.deleteByPrimaryKey(id)!=1) {
             throw new ServiceException(ServiceExceptionCode.EMPLOYEE_DELETE_ERROR);
         }

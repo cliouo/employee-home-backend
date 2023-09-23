@@ -10,7 +10,7 @@ import java.util.Date;
 public class NoticeDetailRespVO extends NoticeBaseVO {
     private Long id;
 
-    private String nickname;
+    private String creator;
 
     private Date createTime;
 }

@@ -1,6 +1,9 @@
 package top.cliouo.emp.mapper;
 
+import top.cliouo.emp.controller.document.vo.DocumentPageReqVO;
 import top.cliouo.emp.mapper.dataobject.DocumentDO;
+
+import java.util.List;
 
 /**
 * @author cliouo
@@ -21,5 +24,7 @@ public interface DocumentMapper {
     int updateByPrimaryKeySelective(DocumentDO record);
 
     int updateByPrimaryKey(DocumentDO record);
+
+    List<DocumentDO> selectPage(DocumentPageReqVO reqVO);
 
 }
