@@ -6,7 +6,7 @@ import top.cliouo.emp.controller.employee.vo.EmployeeAddReqVO;
 import top.cliouo.emp.controller.employee.vo.EmployeeDetailRespVO;
 import top.cliouo.emp.controller.employee.vo.EmployeeUpdateReqVO;
 import top.cliouo.emp.mapper.dataobject.EmployeeDO;
-import top.cliouo.emp.util.PageResult;
+import top.cliouo.emp.common.PageResult;
 
 @Mapper(componentModel = "spring")
 public interface EmployeeConvert {

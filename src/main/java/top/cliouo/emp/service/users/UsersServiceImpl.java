@@ -12,7 +12,7 @@ import top.cliouo.emp.exception.ServiceException;
 import top.cliouo.emp.exception.enums.ServiceExceptionCode;
 import top.cliouo.emp.mapper.UserMapper;
 import top.cliouo.emp.mapper.dataobject.UserDO;
-import top.cliouo.emp.util.PageResult;
+import top.cliouo.emp.common.PageResult;
 
 import java.util.List;
 

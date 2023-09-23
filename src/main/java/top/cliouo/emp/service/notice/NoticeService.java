@@ -5,7 +5,7 @@ import top.cliouo.emp.controller.notice.vo.NoticeDetailRespVO;
 import top.cliouo.emp.controller.notice.vo.NoticePageReqVO;
 import top.cliouo.emp.controller.notice.vo.NoticeUpdateReqVO;
 import top.cliouo.emp.mapper.dataobject.NoticeDO;
-import top.cliouo.emp.util.PageResult;
+import top.cliouo.emp.common.PageResult;
 
 public interface NoticeService {
 

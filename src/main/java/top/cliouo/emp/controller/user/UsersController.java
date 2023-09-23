@@ -12,7 +12,7 @@ import top.cliouo.emp.controller.user.vo.UsersPageReqVO;
 import top.cliouo.emp.controller.user.vo.UsersUpdateReqVO;
 import top.cliouo.emp.convert.UserConvert;
 import top.cliouo.emp.service.users.UsersService;
-import top.cliouo.emp.util.PageResult;
+import top.cliouo.emp.common.PageResult;
 
 @RestController
 @RequestMapping("users")

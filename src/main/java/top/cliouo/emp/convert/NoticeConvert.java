@@ -4,15 +4,13 @@ import com.github.pagehelper.PageInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
-import org.mapstruct.factory.Mappers;
-import org.springframework.beans.factory.annotation.Autowired;
 import top.cliouo.emp.controller.notice.vo.NoticeAddReqVO;
 import top.cliouo.emp.controller.notice.vo.NoticeDetailRespVO;
 import top.cliouo.emp.controller.notice.vo.NoticeUpdateReqVO;
 import top.cliouo.emp.mapper.dataobject.NoticeDO;
 import top.cliouo.emp.qualifier.notice.NoticeQualifier;
 
-import top.cliouo.emp.util.PageResult;
+import top.cliouo.emp.common.PageResult;
 
 
 @Mapper(componentModel = "spring", uses = NoticeQualifier.class)

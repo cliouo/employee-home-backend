@@ -1,4 +1,4 @@
-package top.cliouo.emp.util;
+package top.cliouo.emp.common;
 
 
 import lombok.Data;

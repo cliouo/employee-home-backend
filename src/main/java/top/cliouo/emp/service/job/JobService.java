@@ -5,7 +5,7 @@ import top.cliouo.emp.controller.job.vo.JobDetailRespVO;
 import top.cliouo.emp.controller.job.vo.JobPageReqVO;
 import top.cliouo.emp.controller.job.vo.JobUpdateReqVO;
 import top.cliouo.emp.mapper.dataobject.JobDO;
-import top.cliouo.emp.util.PageResult;
+import top.cliouo.emp.common.PageResult;
 
 public interface JobService {
 

@@ -17,9 +17,9 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.NoHandlerFoundException;
 import top.cliouo.emp.exception.ServiceException;
 import top.cliouo.emp.exception.enums.SaTokenExceptionCode;
-import top.cliouo.emp.util.CommonResult;
+import top.cliouo.emp.common.CommonResult;
 
-import static top.cliouo.emp.util.CommonResult.error;
+import static top.cliouo.emp.common.CommonResult.error;
 
 
 @Slf4j

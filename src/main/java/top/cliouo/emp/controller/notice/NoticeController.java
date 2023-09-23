@@ -9,7 +9,7 @@ import top.cliouo.emp.controller.notice.vo.NoticePageReqVO;
 import top.cliouo.emp.controller.notice.vo.NoticeUpdateReqVO;
 import top.cliouo.emp.convert.NoticeConvert;
 import top.cliouo.emp.service.notice.NoticeService;
-import top.cliouo.emp.util.PageResult;
+import top.cliouo.emp.common.PageResult;
 
 @RestController
 @RequestMapping("notice")

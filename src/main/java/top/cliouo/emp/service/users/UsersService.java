@@ -5,7 +5,7 @@ import top.cliouo.emp.controller.user.vo.UsersDetailRespVO;
 import top.cliouo.emp.controller.user.vo.UsersPageReqVO;
 import top.cliouo.emp.controller.user.vo.UsersUpdateReqVO;
 import top.cliouo.emp.mapper.dataobject.UserDO;
-import top.cliouo.emp.util.PageResult;
+import top.cliouo.emp.common.PageResult;
 
 public interface UsersService {
     UserDO userDetail(Long id);

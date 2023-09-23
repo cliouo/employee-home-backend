@@ -7,13 +7,12 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.Named;
-import org.mapstruct.factory.Mappers;
 import top.cliouo.emp.controller.user.vo.UsersAddReqVO;
 import top.cliouo.emp.controller.user.vo.UsersDetailRespVO;
 import top.cliouo.emp.controller.user.vo.UserLoginRespVO;
 import top.cliouo.emp.controller.user.vo.UsersUpdateReqVO;
 import top.cliouo.emp.mapper.dataobject.UserDO;
-import top.cliouo.emp.util.PageResult;
+import top.cliouo.emp.common.PageResult;
 
 import java.util.Date;
 

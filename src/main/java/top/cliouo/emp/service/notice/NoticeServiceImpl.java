@@ -8,13 +8,11 @@ import top.cliouo.emp.controller.notice.vo.NoticeAddReqVO;
 import top.cliouo.emp.controller.notice.vo.NoticeDetailRespVO;
 import top.cliouo.emp.controller.notice.vo.NoticePageReqVO;
 import top.cliouo.emp.controller.notice.vo.NoticeUpdateReqVO;
-import top.cliouo.emp.convert.JobConvert;
 import top.cliouo.emp.convert.NoticeConvert;
 import top.cliouo.emp.exception.ServiceException;
 import top.cliouo.emp.mapper.NoticeMapper;
-import top.cliouo.emp.mapper.dataobject.JobDO;
 import top.cliouo.emp.mapper.dataobject.NoticeDO;
-import top.cliouo.emp.util.PageResult;
+import top.cliouo.emp.common.PageResult;
 
 import top.cliouo.emp.exception.enums.ServiceExceptionCode;
 

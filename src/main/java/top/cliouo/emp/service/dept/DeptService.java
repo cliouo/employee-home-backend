@@ -5,7 +5,7 @@ import top.cliouo.emp.controller.dept.vo.DeptDetailRespVO;
 import top.cliouo.emp.controller.dept.vo.DeptPageReqVO;
 import top.cliouo.emp.controller.dept.vo.DeptUpdateReqVO;
 import top.cliouo.emp.mapper.dataobject.DeptDO;
-import top.cliouo.emp.util.PageResult;
+import top.cliouo.emp.common.PageResult;
 
 public interface DeptService {
 
