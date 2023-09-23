@@ -29,7 +29,10 @@ public enum ServiceExceptionCode {
     EMPLOYEE_SAVE_ERROR(400800, "员工保存失败"),
     EMPLOYEE_DELETE_ERROR(400810, "员工删除失败"),
     EMPLOYEE_NOT_EXIST(400820, "员工不存在"),
-    EMPLOYEE_UPDATE_ERROR(400830, "员工更新失败");
+    EMPLOYEE_UPDATE_ERROR(400830, "员工更新失败"),
+    FILE_SAVE_ERROR(400900, "文件保存失败"),
+    FILE_NOT_EXISTS(400910, "文件不存在"),
+    FILENAME_IS_BLAND(400920, "文件名为空");
 
     private final int code;
     private final String message;

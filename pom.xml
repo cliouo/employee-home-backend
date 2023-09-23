@@ -16,7 +16,7 @@
     <description>employee-home-backend</description>
 
     <properties>
-<!--        <pagehelper.version>1.5.0</pagehelper.version>-->
+        <!--        <pagehelper.version>1.5.0</pagehelper.version>-->
         <pagehelper.version>1.4.7</pagehelper.version>
         <baidu.aip.version>4.16.16</baidu.aip.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
@@ -140,6 +140,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--   hutool核心工具包     -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+            <version>5.8.21</version>
+        </dependency>
 
     </dependencies>
 
@@ -170,7 +176,7 @@
                         <annotationProcessor>
                             org.springframework.boot.configurationprocessor.ConfigurationMetadataAnnotationProcessor
                         </annotationProcessor>
-<!--                        <annotationProcessor>org.mapstruct.ap.MappingProcessor</annotationProcessor>-->
+                        <!--                        <annotationProcessor>org.mapstruct.ap.MappingProcessor</annotationProcessor>-->
                     </annotationProcessors>
                 </configuration>
             </plugin>

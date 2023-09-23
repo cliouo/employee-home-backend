@@ -45,3 +45,8 @@ spring:
 logging:
   level:
     top.cliouo.emp.mapper: debug
+
+# 文件保存路径
+file:
+  path:
+    local: D:/upload/
