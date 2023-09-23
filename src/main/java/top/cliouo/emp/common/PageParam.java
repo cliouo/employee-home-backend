@@ -16,7 +16,7 @@ public class PageParam implements Serializable {
     private static final Integer PAGE_SIZE = 10;
 
     @NotNull(message = "页码不能为空")
-    @Min(value = 1, message = "页码最小值为 1")
+    @Min(value = 0, message = "页码最小值为 0")
     private Integer pageNum = PAGE_NUM;
 
     @NotNull(message = "每页条数不能为空")

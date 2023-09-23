@@ -35,6 +35,8 @@ pagehelper:
   helper-dialect: mysql
   reasonable: true
   default-count: true
+  # pageSize = 0 时查询所有
+  page-size-zero: true
 
 baidu:
   aip:
