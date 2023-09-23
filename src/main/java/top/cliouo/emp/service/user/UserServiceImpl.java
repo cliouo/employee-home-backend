@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserService {
                 .id(loginId)
                 .password(BCrypt.hashpw(reqVO.getNewPassword())) //加密
                 .build());
+        StpUtil.logout();
         return null;
     }
 
