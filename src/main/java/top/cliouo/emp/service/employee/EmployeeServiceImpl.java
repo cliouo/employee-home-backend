@@ -1,5 +1,6 @@
 package top.cliouo.emp.service.employee;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,6 +64,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public PageResult<EmployeeDetailRespVO> employeePage(EmployeePageReqVO reqVO) {
+        PageHelper.startPage(reqVO.getPageNum(), reqVO.getPageSize());
         List<EmployeeDO> employeeDOS = employeeMapper.selectPage(reqVO);
         PageInfo<EmployeeDO> page = new PageInfo<>(employeeDOS);
         return employeeConvert.convert(page);

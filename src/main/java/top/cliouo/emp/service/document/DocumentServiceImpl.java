@@ -1,6 +1,7 @@
 package top.cliouo.emp.service.document;
 
 import cn.dev33.satoken.stp.StpUtil;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,6 +65,7 @@ public class DocumentServiceImpl implements DocumentService{
 
     @Override
     public PageResult<DocumentDetailRespVO> documentPage(DocumentPageReqVO reqVO) {
+        PageHelper.startPage(reqVO.getPageNum(), reqVO.getPageSize());
         List<DocumentDO> documentDOS = documentMapper.selectPage(reqVO);
         PageInfo<DocumentDO> page = new PageInfo<>(documentDOS);
         return documentConvert.convert(page);

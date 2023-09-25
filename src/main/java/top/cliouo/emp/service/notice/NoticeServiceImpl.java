@@ -1,6 +1,7 @@
 package top.cliouo.emp.service.notice;
 
 import cn.dev33.satoken.stp.StpUtil;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,6 +67,7 @@ public class NoticeServiceImpl implements NoticeService{
 
     @Override
     public PageResult<NoticeDetailRespVO> noticePage(NoticePageReqVO reqVO) {
+        PageHelper.startPage(reqVO.getPageNum(), reqVO.getPageSize());
         List<NoticeDO> noticeDOS = noticeMapper.selectPage(reqVO);
         PageInfo<NoticeDO> page = new PageInfo(noticeDOS);
         return noticeConvert.convertPage(page);

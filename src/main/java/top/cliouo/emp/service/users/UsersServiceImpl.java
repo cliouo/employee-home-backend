@@ -1,5 +1,6 @@
 package top.cliouo.emp.service.users;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -84,7 +85,7 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public PageResult<UsersDetailRespVO> userPage(UsersPageReqVO reqVO) {
-
+        PageHelper.startPage(reqVO.getPageNum(), reqVO.getPageSize());
         List<UserDO> userDOList = userMapper.selectPage(reqVO);
         PageInfo<UserDO> page = new PageInfo(userDOList);
         return userConvert.convertPage(page);

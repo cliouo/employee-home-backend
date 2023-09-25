@@ -1,6 +1,7 @@
 package top.cliouo.emp.service.dept;
 
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,7 +65,7 @@ public class DeptServiceImpl implements DeptService {
     }
     @Override
     public PageResult<DeptDetailRespVO> deptPage(DeptPageReqVO reqVO) {
-
+        PageHelper.startPage(reqVO.getPageNum(), reqVO.getPageSize());
         List<DeptDO> deptDOList = deptMapper.selectPage(reqVO);
         PageInfo<DeptDO> page = new PageInfo(deptDOList);
         return deptConvert.convertPage(page);

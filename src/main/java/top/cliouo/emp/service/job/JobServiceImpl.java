@@ -1,6 +1,7 @@
 package top.cliouo.emp.service.job;
 
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,7 +66,7 @@ public class JobServiceImpl implements JobService{
     }
     @Override
     public PageResult<JobDetailRespVO> jobPage(JobPageReqVO reqVO) {
-
+        PageHelper.startPage(reqVO.getPageNum(), reqVO.getPageSize());
         List<JobDO> jobDOList = jobMapper.selectPage(reqVO);
         PageInfo<JobDO> page = new PageInfo(jobDOList);
         return jobConvert.convertPage(page);

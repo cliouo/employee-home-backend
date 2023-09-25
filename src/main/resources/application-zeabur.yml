@@ -42,3 +42,11 @@ spring:
           max-idle: 10
           # 连接池中的最小空闲连接
           min-idle: 0
+logging:
+  level:
+    top.cliouo.emp.mapper: debug
+
+# 文件保存路径
+file:
+  path:
+    local: /root/

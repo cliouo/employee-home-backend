@@ -27,7 +27,7 @@ public class DocumentController {
     }
 
     @GetMapping
-    public PageResult<DocumentDetailRespVO> page(@RequestBody @Valid DocumentPageReqVO reqVO){
+    public PageResult<DocumentDetailRespVO> page(@Valid DocumentPageReqVO reqVO){
         return documentService.documentPage(reqVO);
     }
 
