@@ -75,7 +75,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Object faceRegister(String face) {
-        String faceToken = baiduAipFace.faceRegister(face, "BASE64", StpUtil.getLoginIdAsString());
+        String faceDropStr = face.replace("\"", "");
+        String faceToken = baiduAipFace.faceRegister(faceDropStr, "BASE64", StpUtil.getLoginIdAsString());
         if(faceToken == null){
             throw new ServiceException(FACE_REGISTER_ERROR);
         }
